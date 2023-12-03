@@ -41,6 +41,7 @@ dependencies:
   auto_route: ^7.8.4
   dartz: ^0.10.1
   equatable: ^2.0.5
+  dio_cache_interceptor: ^3.5.0
 
 dev_dependencies:
   flutter_test:
