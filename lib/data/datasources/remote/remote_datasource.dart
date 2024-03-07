@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:valorantlab/core/error/failure.dart';
 import 'package:valorantlab/core/network/network.dart';
 import 'package:valorantlab/data/datasources/remote/models/agent.dart';
@@ -16,10 +14,17 @@ class RemoteDatasourceImpl implements RemoteDataSource {
 
   @override
   Future<List<AgentModel>> getAgents() async {
-    final response = await networkManager.request(RequestMethod.get, _urlAgent);
+    final response = await networkManager.request(
+      RequestMethod.get,
+      _urlAgent,
+      queryParametes: {
+        'isPlayableCharacter': 'true', // to make sure don't have a "duplicate" Sova
+      },
+    );
 
-    if (response.statusCode == 200) {
-      return (json.decode(response.data) as List).map((item) => AgentModel.fromJson(item)).toList();
+    if (response.statusCode == 200 || response.statusCode == 304) {
+      final List<dynamic> data = response.data['data'];
+      return data.map((e) => AgentModel.fromJson(e)).toList();
     } else {
       throw ServerFailure();
     }
