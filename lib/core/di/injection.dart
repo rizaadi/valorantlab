@@ -13,23 +13,23 @@ Future<void> initializeDependencies() async {
   sl.registerFactory<AgentBloc>(() => AgentBloc(getAgentsUseCase: sl()));
 
   /// Dio client
-  sl.registerSingleton<Dio>(Dio());
+  sl.registerLazySingleton<Dio>(() => Dio());
 
   /// Network Manager
-  sl.registerSingleton<NetworkManager>(NetworkManager());
+  sl.registerLazySingleton<NetworkManager>(() => NetworkManager());
 
   ///
   /// Data sources
   ///
-  sl.registerSingleton<RemoteDataSource>(RemoteDatasourceImpl(sl()));
+  sl.registerLazySingleton<RemoteDataSource>(() => RemoteDatasourceImpl(sl()));
 
   ///
   /// Repository
   ///
-  sl.registerSingleton<AgentRepository>(AgentRepositoryImpl(remoteDataSource: sl()));
+  sl.registerLazySingleton<AgentRepository>(() => AgentRepositoryImpl(remoteDataSource: sl()));
 
   ///
   /// Use Cases
   ///
-  sl.registerSingleton<GetAgentsUseCase>(GetAgentsUseCase(sl()));
+  sl.registerLazySingleton<GetAgentsUseCase>(() => GetAgentsUseCase(sl()));
 }
