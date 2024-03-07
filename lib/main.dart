@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:valorantlab/features/agent/presentation/bloc/agent_bloc.dart';
 
-import 'package:valorantlab/features/agent/presentation/screen/agent_screen.dart';
+import 'package:valorantlab/features/root_screen/root_screen.dart';
 
 import 'core/di/injection.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => sl<AgentBloc>()),
         ],
-        child: const AgentScreen(),
+        child: const RootScreen(),
       ),
     );
   }
