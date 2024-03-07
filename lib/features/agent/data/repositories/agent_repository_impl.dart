@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:valorantlab/core/error/failure.dart';
-import 'package:valorantlab/data/datasources/mappers/remote_to_entity_mapper.dart';
-import 'package:valorantlab/data/datasources/remote/remote_datasource.dart';
-import 'package:valorantlab/domain/entities/agent.dart';
-import 'package:valorantlab/domain/repositories/agent_repository.dart';
+import 'package:valorantlab/features/agent/data/datasources/mappers/remote_to_entity_mapper.dart';
+import 'package:valorantlab/features/agent/data/datasources/remote/remote_datasource.dart';
+import 'package:valorantlab/features/agent/domain/entities/agent.dart';
+import 'package:valorantlab/features/agent/domain/repositories/agent_repository.dart';
 
 class AgentRepositoryImpl implements AgentRepository {
   final RemoteDataSource remoteDataSource;

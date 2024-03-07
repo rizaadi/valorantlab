@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:valorantlab/core/constans/failure_constant.dart';
 import 'package:valorantlab/core/error/failure.dart';
 import 'package:valorantlab/core/usecases/usecase.dart';
-import 'package:valorantlab/domain/entities/agent.dart';
-import 'package:valorantlab/domain/usecases/get_agents_usecase.dart';
+import 'package:valorantlab/features/agent/domain/entities/agent.dart';
+import 'package:valorantlab/features/agent/domain/usecases/get_agents_usecase.dart';
 
 part 'agent_event.dart';
 part 'agent_state.dart';

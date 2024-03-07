@@ -1,6 +1,6 @@
 import 'package:valorantlab/core/error/failure.dart';
 import 'package:valorantlab/core/network/network.dart';
-import 'package:valorantlab/data/datasources/remote/models/agent.dart';
+import 'package:valorantlab/features/agent/data/datasources/remote/models/agent.dart';
 
 abstract class RemoteDataSource {
   Future<List<AgentModel>> getAgents();

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:valorantlab/presentation/bloc/agent_bloc.dart';
+import 'package:valorantlab/features/agent/presentation/bloc/agent_bloc.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class AgentScreen extends StatefulWidget {
+  const AgentScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<AgentScreen> createState() => _AgentScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _AgentScreenState extends State<AgentScreen> {
   @override
   void initState() {
     super.initState();
