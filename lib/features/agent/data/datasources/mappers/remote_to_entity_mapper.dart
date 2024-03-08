@@ -1,5 +1,5 @@
 import 'package:valorantlab/features/agent/data/datasources/remote/models/agent.dart';
-import 'package:valorantlab/features/agent/domain/entities/agent.dart';
+import 'package:valorantlab/features/agent/domain/entities/agent_entity.dart';
 
 extension AgentExtension on AgentModel {
   Agent toEntity() => Agent(

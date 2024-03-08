@@ -4,11 +4,11 @@ enum AgentStatus { initial, loading, loaded, error }
 
 class AgentState extends Equatable {
   final AgentStatus status;
-  final List<Agent> agents;
+  final List<Agent>? agents;
 
   const AgentState({
     required this.status,
-    required this.agents,
+    this.agents,
   });
 
   AgentState copyWith({
@@ -23,14 +23,12 @@ class AgentState extends Equatable {
 
   static AgentState initial() => const AgentState(
         status: AgentStatus.initial,
-        agents: [],
       );
 
   static AgentState loading() => const AgentState(
         status: AgentStatus.loading,
-        agents: [],
       );
 
   @override
-  List<Object> get props => [agents];
+  List<Object?> get props => [status, agents];
 }

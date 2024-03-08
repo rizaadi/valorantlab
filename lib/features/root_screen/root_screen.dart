@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorantlab/features/agent/presentation/screen/agent_screen.dart';
+import 'package:valorantlab/features/agent/presentation/agent/screen/agent_screen.dart';
 import 'package:valorantlab/features/home/presentation/home_screen.dart';
 
 class RootScreen extends StatefulWidget {

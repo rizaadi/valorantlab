@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:valorantlab/core/constans/failure_constant.dart';
-import 'package:valorantlab/core/error/failure.dart';
 import 'package:valorantlab/core/usecases/usecase.dart';
-import 'package:valorantlab/features/agent/domain/entities/agent.dart';
+import 'package:valorantlab/features/agent/domain/entities/agent_entity.dart';
 import 'package:valorantlab/features/agent/domain/usecases/get_agents_usecase.dart';
 
 part 'agent_event.dart';
@@ -18,13 +16,12 @@ class AgentBloc extends Bloc<AgentEvent, AgentState> {
       final agents = await getAgentsUseCase(NoParams());
 
       agents.fold((l) {
-        final message = _mapFailureToMessage(l);
+        // final message = _mapFailureToMessage(l);
 
         emit(state.copyWith(
           status: AgentStatus.error,
           agents: [],
         ));
-        print("ERRRORRR $message");
       }, (r) {
         emit(state.copyWith(
           status: AgentStatus.loaded,
@@ -33,14 +30,14 @@ class AgentBloc extends Bloc<AgentEvent, AgentState> {
       });
     });
   }
-  String _mapFailureToMessage(Failure failure) {
-    switch (failure.runtimeType) {
-      case ServerFailure:
-        return SERVER_FAILURE_MESSAGE;
-      case CacheFailure:
-        return CACHE_FAILURE_MESSAGE;
-      default:
-        return "Unexpected error";
-    }
-  }
+  // String _mapFailureToMessage(Failure failure) {
+  //   switch (failure.runtimeType) {
+  //     case ServerFailure:
+  //       return SERVER_FAILURE_MESSAGE;
+  //     case CacheFailure:
+  //       return CACHE_FAILURE_MESSAGE;
+  //     default:
+  //       return "Unexpected error";
+  //   }
+  // }
 }

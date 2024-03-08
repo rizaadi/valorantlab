@@ -74,6 +74,9 @@ class Agent extends Equatable {
         abilities,
         voiceLine
       ];
+
+  @override
+  bool get stringify => true;
 }
 
 class Ability extends Equatable {

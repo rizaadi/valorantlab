@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:valorantlab/features/agent/presentation/bloc/agent_bloc.dart';
-
 import 'package:valorantlab/features/root_screen/root_screen.dart';
-
 import 'core/di/injection.dart';
 
 void main() async {
@@ -17,21 +13,16 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Valorant Lab',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => sl<AgentBloc>()),
-        ],
-        child: const RootScreen(),
-      ),
+      home: const RootScreen(),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:valorantlab/features/agent/presentation/bloc/agent_bloc.dart';
+import 'package:valorantlab/core/di/injection.dart';
+import 'package:valorantlab/features/agent/presentation/agent/bloc/agent_bloc.dart';
+import 'package:valorantlab/features/agent/presentation/agent_detail/screen/agent_detail_screen.dart';
 
 class AgentScreen extends StatefulWidget {
   const AgentScreen({super.key});
@@ -11,9 +13,18 @@ class AgentScreen extends StatefulWidget {
 
 class _AgentScreenState extends State<AgentScreen> {
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => sl<AgentBloc>()..add(const GetAgents()),
+      child: const AgentView(),
+    );
   }
+}
+
+class AgentView extends StatelessWidget {
+  const AgentView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +49,18 @@ class _AgentScreenState extends State<AgentScreen> {
               } else if (state.status == AgentStatus.loaded) {
                 return Expanded(
                   child: ListView.builder(
-                    itemCount: state.agents.length,
+                    itemCount: state.agents!.length,
                     itemBuilder: (context, index) {
-                      final agent = state.agents[index];
+                      final agent = state.agents![index];
                       return ListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AgentDetailScreen(agentId: agent.uuid),
+                            ),
+                          );
+                        },
                         title: Text(agent.displayName),
                         subtitle: Text(agent.description),
                       );
