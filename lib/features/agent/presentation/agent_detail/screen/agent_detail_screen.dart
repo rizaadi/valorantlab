@@ -40,7 +40,10 @@ class AgentDetailView extends StatelessWidget {
             );
           } else if (state.status == AgentDetailStatus.loaded) {
             return SingleChildScrollView(
-              child: Text(state.agent.toString()),
+              child: ListTile(
+                title: Text(state.agent?.displayName ?? '-'),
+                subtitle: Text(state.agent?.description ?? '-'),
+              ),
             );
           } else if (state.status == AgentDetailStatus.error) {
             return const Center(
