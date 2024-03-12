@@ -19,7 +19,8 @@ class RemoteDatasourceImpl implements RemoteDataSource {
       RequestMethod.get,
       _urlAgent,
       queryParametes: {
-        'isPlayableCharacter': 'true', // to make sure don't have a "duplicate" Sova
+        'isPlayableCharacter':
+            'true', // to make sure don't have a "duplicate" Sova
       },
     );
     if (response.statusCode == 200 || response.statusCode == 304) {

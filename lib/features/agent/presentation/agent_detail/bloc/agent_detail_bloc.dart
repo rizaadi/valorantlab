@@ -9,7 +9,8 @@ part 'agent_detail_state.dart';
 class AgentDetailBloc extends Bloc<AgentDetailEvent, AgentDetailState> {
   GetAgentDetailUseCase getAgentDetailUseCase;
 
-  AgentDetailBloc({required this.getAgentDetailUseCase}) : super(AgentDetailState.initial()) {
+  AgentDetailBloc({required this.getAgentDetailUseCase})
+      : super(AgentDetailState.initial()) {
     on<GetAgentDetail>((event, emit) async {
       emit(AgentDetailState.loading());
       final agents = await getAgentDetailUseCase(event.agentId);

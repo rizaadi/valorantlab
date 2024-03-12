@@ -13,7 +13,8 @@ final sl = GetIt.instance;
 Future<void> initializeDependencies() async {
   /// bloc
   sl.registerFactory<AgentBloc>(() => AgentBloc(getAgentsUseCase: sl()));
-  sl.registerFactory<AgentDetailBloc>(() => AgentDetailBloc(getAgentDetailUseCase: sl()));
+  sl.registerFactory<AgentDetailBloc>(
+      () => AgentDetailBloc(getAgentDetailUseCase: sl()));
 
   /// Dio client
   sl.registerLazySingleton<Dio>(() => Dio());
@@ -29,11 +30,13 @@ Future<void> initializeDependencies() async {
   ///
   /// Repository
   ///
-  sl.registerLazySingleton<AgentRepository>(() => AgentRepositoryImpl(remoteDataSource: sl()));
+  sl.registerLazySingleton<AgentRepository>(
+      () => AgentRepositoryImpl(remoteDataSource: sl()));
 
   ///
   /// Use Cases
   ///
   sl.registerLazySingleton<GetAgentsUseCase>(() => GetAgentsUseCase(sl()));
-  sl.registerLazySingleton<GetAgentDetailUseCase>(() => GetAgentDetailUseCase(sl()));
+  sl.registerLazySingleton<GetAgentDetailUseCase>(
+      () => GetAgentDetailUseCase(sl()));
 }

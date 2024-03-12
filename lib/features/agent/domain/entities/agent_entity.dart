@@ -115,7 +115,15 @@ class RecruitmentData extends Equatable {
     required this.endDate,
   });
   @override
-  List<Object?> get props => [counterId, milestoneId, milestoneThreshold, useLevelVpCostOverride, levelVpCostOverride, startDate, endDate];
+  List<Object?> get props => [
+        counterId,
+        milestoneId,
+        milestoneThreshold,
+        useLevelVpCostOverride,
+        levelVpCostOverride,
+        startDate,
+        endDate
+      ];
 }
 
 class Role extends Equatable {
@@ -134,5 +142,6 @@ class Role extends Equatable {
   });
 
   @override
-  List<Object?> get props => [uuid, displayName, description, displayIcon, assetPath];
+  List<Object?> get props =>
+      [uuid, displayName, description, displayIcon, assetPath];
 }

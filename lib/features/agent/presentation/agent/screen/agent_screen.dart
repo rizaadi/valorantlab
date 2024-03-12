@@ -57,7 +57,8 @@ class AgentView extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AgentDetailScreen(agentId: agent.uuid),
+                              builder: (context) =>
+                                  AgentDetailScreen(agentId: agent.uuid),
                             ),
                           );
                         },

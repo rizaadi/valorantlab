@@ -30,7 +30,8 @@ class AgentModel with _$AgentModel {
     required dynamic voiceLine,
   }) = _AgentModel;
 
-  factory AgentModel.fromJson(Map<String, dynamic> json) => _$AgentModelFromJson(json);
+  factory AgentModel.fromJson(Map<String, dynamic> json) =>
+      _$AgentModelFromJson(json);
 }
 
 @freezed
@@ -42,7 +43,8 @@ class AbilityModel with _$AbilityModel {
     required String? displayIcon,
   }) = _AbilityModel;
 
-  factory AbilityModel.fromJson(Map<String, dynamic> json) => _$AbilityModelFromJson(json);
+  factory AbilityModel.fromJson(Map<String, dynamic> json) =>
+      _$AbilityModelFromJson(json);
 }
 
 @freezed
@@ -53,11 +55,12 @@ class RecruitmentDataModel with _$RecruitmentDataModel {
     required int milestoneThreshold,
     required bool useLevelVpCostOverride,
     required int levelVpCostOverride,
-    required DateTime startDate, 
+    required DateTime startDate,
     required DateTime endDate,
   }) = _RecruitmentDataModel;
 
-  factory RecruitmentDataModel.fromJson(Map<String, dynamic> json) => _$RecruitmentDataModelFromJson(json);
+  factory RecruitmentDataModel.fromJson(Map<String, dynamic> json) =>
+      _$RecruitmentDataModelFromJson(json);
 }
 
 @freezed
@@ -70,5 +73,6 @@ class RoleModel with _$RoleModel {
     required String assetPath,
   }) = _RoleModel;
 
-  factory RoleModel.fromJson(Map<String, dynamic> json) => _$RoleModelFromJson(json);
+  factory RoleModel.fromJson(Map<String, dynamic> json) =>
+      _$RoleModelFromJson(json);
 }
