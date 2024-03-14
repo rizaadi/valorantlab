@@ -60,6 +60,7 @@ dev_dependencies:
   json_serializable: ^6.7.1
   husky: ^0.1.7
   commitlint_cli: ^0.7.1
+  mocktail: ^1.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
