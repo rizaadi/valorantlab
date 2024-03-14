@@ -7,7 +7,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:valorantlab/core/constants/strings_constant.dart';
 import 'package:valorantlab/core/error/failure.dart';
-import 'package:valorantlab/features/agent/data/datasources/remote/models/agent.dart';
+import 'package:valorantlab/features/agent/data/models/agent.dart';
 import 'package:valorantlab/features/agent/data/datasources/remote/remote_datasource.dart';
 
 import '../../../../fixtures/fixture_reader.dart';

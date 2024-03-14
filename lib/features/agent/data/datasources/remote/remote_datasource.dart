@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:valorantlab/core/constants/strings_constant.dart';
 import 'package:valorantlab/core/error/failure.dart';
-import 'package:valorantlab/features/agent/data/datasources/remote/models/agent.dart';
+import 'package:valorantlab/features/agent/data/models/agent.dart';
 
 abstract class RemoteDataSource {
   Future<List<AgentModel>> getAgents();
