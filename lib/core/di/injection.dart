@@ -1,6 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:valorantlab/core/network/network.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:valorantlab/features/agent/data/datasources/remote/remote_datasource.dart';
 import 'package:valorantlab/features/agent/data/repositories/agent_repository_impl.dart';
 import 'package:valorantlab/features/agent/domain/repositories/agent_repository.dart';
@@ -15,12 +15,6 @@ Future<void> initializeDependencies() async {
   sl.registerFactory<AgentBloc>(() => AgentBloc(getAgentsUseCase: sl()));
   sl.registerFactory<AgentDetailBloc>(
       () => AgentDetailBloc(getAgentDetailUseCase: sl()));
-
-  /// Dio client
-  sl.registerLazySingleton<Dio>(() => Dio());
-
-  /// Network Manager
-  sl.registerLazySingleton<NetworkManager>(() => NetworkManager());
 
   ///
   /// Data sources
@@ -39,4 +33,9 @@ Future<void> initializeDependencies() async {
   sl.registerLazySingleton<GetAgentsUseCase>(() => GetAgentsUseCase(sl()));
   sl.registerLazySingleton<GetAgentDetailUseCase>(
       () => GetAgentDetailUseCase(sl()));
+
+  ///
+  /// Use Cases
+  ///
+  sl.registerLazySingleton<http.Client>(() => http.Client());
 }

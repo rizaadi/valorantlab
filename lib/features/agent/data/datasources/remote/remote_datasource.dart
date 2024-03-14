@@ -1,6 +1,9 @@
+import 'dart:convert';
+
+import 'package:valorantlab/core/constants/strings_constant.dart';
 import 'package:valorantlab/core/error/failure.dart';
-import 'package:valorantlab/core/network/network.dart';
 import 'package:valorantlab/features/agent/data/datasources/remote/models/agent.dart';
+import 'package:http/http.dart' as http;
 
 abstract class RemoteDataSource {
   Future<List<AgentModel>> getAgents();
@@ -8,23 +11,19 @@ abstract class RemoteDataSource {
 }
 
 class RemoteDatasourceImpl implements RemoteDataSource {
-  RemoteDatasourceImpl(this.networkManager);
-  final NetworkManager networkManager;
-
-  static const String _urlAgent = 'https://valorant-api.com/v1/agents';
+  RemoteDatasourceImpl(this.client);
+  final http.Client client;
 
   @override
   Future<List<AgentModel>> getAgents() async {
-    final response = await networkManager.request(
-      RequestMethod.get,
-      _urlAgent,
-      queryParametes: {
-        'isPlayableCharacter':
-            'true', // to make sure don't have a "duplicate" Sova
-      },
-    );
+    final url = Uri.parse('$baseUrl/agents').replace(queryParameters: {
+      // to make sure don't have a "duplicate" Sova
+      'isPlayableCharacter': 'true',
+    });
+    final response = await client.get(url);
+
     if (response.statusCode == 200 || response.statusCode == 304) {
-      final List<dynamic> data = response.data['data'];
+      final List<dynamic> data = jsonDecode(response.body)['data'];
       return data.map((e) => AgentModel.fromJson(e)).toList();
     } else {
       throw ServerFailure();
@@ -33,13 +32,11 @@ class RemoteDatasourceImpl implements RemoteDataSource {
 
   @override
   Future<AgentModel> getAgentById(String agentId) async {
-    final response = await networkManager.request(
-      RequestMethod.get,
-      '$_urlAgent/$agentId',
-    );
+    final url = Uri.parse('$baseUrl/agents/$agentId');
+    final response = await client.get(url);
 
     if (response.statusCode == 200 || response.statusCode == 304) {
-      return AgentModel.fromJson(response.data['data']);
+      return AgentModel.fromJson(jsonDecode(response.body)['data']);
     } else {
       throw ServerFailure();
     }
