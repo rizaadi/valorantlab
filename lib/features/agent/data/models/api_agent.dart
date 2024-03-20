@@ -1,11 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'agent.freezed.dart';
-part 'agent.g.dart';
+part 'api_agent.freezed.dart';
+part 'api_agent.g.dart';
 
 @freezed
-class AgentModel with _$AgentModel {
-  const factory AgentModel({
+class ApiAgent with _$ApiAgent {
+  const factory ApiAgent({
     required String uuid,
     required String displayName,
     required String description,
@@ -24,32 +25,31 @@ class AgentModel with _$AgentModel {
     required bool isPlayableCharacter,
     required bool isAvailableForTest,
     required bool isBaseContent,
-    required RoleModel? role,
-    required RecruitmentDataModel? recruitmentData,
-    required List<AbilityModel> abilities,
-    required dynamic voiceLine,
-  }) = _AgentModel;
+    required ApiRole? role,
+    required ApiRecruitmentData? recruitmentData,
+    required List<ApiAbility> abilities,
+  }) = _ApiAgent;
 
-  factory AgentModel.fromJson(Map<String, dynamic> json) =>
-      _$AgentModelFromJson(json);
+  factory ApiAgent.fromJson(Map<String, dynamic> json) =>
+      _$ApiAgentFromJson(json);
 }
 
 @freezed
-class AbilityModel with _$AbilityModel {
-  const factory AbilityModel({
+class ApiAbility with _$ApiAbility {
+  const factory ApiAbility({
     required String slot,
     required String displayName,
     required String description,
     required String? displayIcon,
-  }) = _AbilityModel;
+  }) = _ApiAbility;
 
-  factory AbilityModel.fromJson(Map<String, dynamic> json) =>
-      _$AbilityModelFromJson(json);
+  factory ApiAbility.fromJson(Map<String, dynamic> json) =>
+      _$ApiAbilityFromJson(json);
 }
 
 @freezed
-class RecruitmentDataModel with _$RecruitmentDataModel {
-  const factory RecruitmentDataModel({
+class ApiRecruitmentData with _$ApiRecruitmentData {
+  const factory ApiRecruitmentData({
     required String counterId,
     required String milestoneId,
     required int milestoneThreshold,
@@ -57,22 +57,22 @@ class RecruitmentDataModel with _$RecruitmentDataModel {
     required int levelVpCostOverride,
     required DateTime startDate,
     required DateTime endDate,
-  }) = _RecruitmentDataModel;
+  }) = _ApiRecruitmentData;
 
-  factory RecruitmentDataModel.fromJson(Map<String, dynamic> json) =>
-      _$RecruitmentDataModelFromJson(json);
+  factory ApiRecruitmentData.fromJson(Map<String, dynamic> json) =>
+      _$ApiRecruitmentDataFromJson(json);
 }
 
 @freezed
-class RoleModel with _$RoleModel {
-  const factory RoleModel({
+class ApiRole with _$ApiRole {
+  const factory ApiRole({
     required String uuid,
     required String displayName,
     required String description,
     required String displayIcon,
     required String assetPath,
-  }) = _RoleModel;
+  }) = _ApiRole;
 
-  factory RoleModel.fromJson(Map<String, dynamic> json) =>
-      _$RoleModelFromJson(json);
+  factory ApiRole.fromJson(Map<String, dynamic> json) =>
+      _$ApiRoleFromJson(json);
 }

@@ -1,7 +1,7 @@
-import 'package:valorantlab/features/agent/data/models/agent.dart';
+import 'package:valorantlab/features/agent/data/models/local_agent.dart';
 import 'package:valorantlab/features/agent/domain/entities/agent_entity.dart';
 
-extension AgentExtension on AgentModel {
+extension LocalAgentExtension on LocalAgent {
   Agent toEntity() => Agent(
         uuid: uuid,
         displayName: displayName,
@@ -23,12 +23,11 @@ extension AgentExtension on AgentModel {
         isBaseContent: isBaseContent,
         role: role?.toEntity(),
         recruitmentData: recruitmentData?.toEntity(),
-        abilities: abilities.map((e) => e.toEntity()).toList(),
-        voiceLine: voiceLine,
+        abilities: abilities?.map((e) => e.toEntity()).toList(),
       );
 }
 
-extension RoleModelExtension on RoleModel {
+extension ApiRoleExtension on LocalRole {
   Role toEntity() => Role(
         uuid: uuid,
         displayName: displayName,
@@ -38,7 +37,7 @@ extension RoleModelExtension on RoleModel {
       );
 }
 
-extension RecruitmentDataModelExtension on RecruitmentDataModel {
+extension ApiRecruitmentDataExtension on LocalRecruitmentData {
   RecruitmentData toEntity() => RecruitmentData(
         counterId: counterId,
         milestoneId: milestoneId,
@@ -50,7 +49,7 @@ extension RecruitmentDataModelExtension on RecruitmentDataModel {
       );
 }
 
-extension AbilityModelExtension on AbilityModel {
+extension ApiAbilityExtension on LocalAbility {
   Ability toEntity() => Ability(
         slot: slot,
         displayName: displayName,

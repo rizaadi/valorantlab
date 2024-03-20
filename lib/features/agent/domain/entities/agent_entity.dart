@@ -2,27 +2,26 @@ import 'package:equatable/equatable.dart';
 
 class Agent extends Equatable {
   final String uuid;
-  final String displayName;
-  final String description;
-  final String developerName;
+  final String? displayName;
+  final String? description;
+  final String? developerName;
   final List<String>? characterTags;
-  final String displayIcon;
-  final String displayIconSmall;
+  final String? displayIcon;
+  final String? displayIconSmall;
   final String? bustPortrait;
   final String? fullPortrait;
   final String? fullPortraitV2;
-  final String killfeedPortrait;
+  final String? killfeedPortrait;
   final String? background;
-  final List<String> backgroundGradientColors;
-  final String assetPath;
-  final bool isFullPortraitRightFacing;
-  final bool isPlayableCharacter;
-  final bool isAvailableForTest;
-  final bool isBaseContent;
+  final List<String>? backgroundGradientColors;
+  final String? assetPath;
+  final bool? isFullPortraitRightFacing;
+  final bool? isPlayableCharacter;
+  final bool? isAvailableForTest;
+  final bool? isBaseContent;
   final Role? role;
   final RecruitmentData? recruitmentData;
-  final List<Ability> abilities;
-  final dynamic voiceLine;
+  final List<Ability>? abilities;
 
   const Agent({
     required this.uuid,
@@ -46,7 +45,6 @@ class Agent extends Equatable {
     required this.role,
     required this.recruitmentData,
     required this.abilities,
-    required this.voiceLine,
   });
 
   @override
@@ -72,7 +70,6 @@ class Agent extends Equatable {
         role,
         recruitmentData,
         abilities,
-        voiceLine
       ];
 
   @override
@@ -80,9 +77,9 @@ class Agent extends Equatable {
 }
 
 class Ability extends Equatable {
-  final String slot;
-  final String displayName;
-  final String description;
+  final String? slot;
+  final String? displayName;
+  final String? description;
   final String? displayIcon;
 
   const Ability({
@@ -97,13 +94,13 @@ class Ability extends Equatable {
 }
 
 class RecruitmentData extends Equatable {
-  final String counterId;
-  final String milestoneId;
-  final int milestoneThreshold;
-  final bool useLevelVpCostOverride;
-  final int levelVpCostOverride;
-  final DateTime startDate;
-  final DateTime endDate;
+  final String? counterId;
+  final String? milestoneId;
+  final int? milestoneThreshold;
+  final bool? useLevelVpCostOverride;
+  final int? levelVpCostOverride;
+  final DateTime? startDate;
+  final DateTime? endDate;
 
   const RecruitmentData({
     required this.counterId,
@@ -127,11 +124,11 @@ class RecruitmentData extends Equatable {
 }
 
 class Role extends Equatable {
-  final String uuid;
-  final String displayName;
-  final String description;
-  final String displayIcon;
-  final String assetPath;
+  final String? uuid;
+  final String? displayName;
+  final String? description;
+  final String? displayIcon;
+  final String? assetPath;
 
   const Role({
     required this.uuid,

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'agent.dart';
+part of 'api_agent.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AgentModelImpl _$$AgentModelImplFromJson(Map<String, dynamic> json) =>
-    _$AgentModelImpl(
+_$ApiAgentImpl _$$ApiAgentImplFromJson(Map<String, dynamic> json) =>
+    _$ApiAgentImpl(
       uuid: json['uuid'] as String,
       displayName: json['displayName'] as String,
       description: json['description'] as String,
@@ -33,18 +33,17 @@ _$AgentModelImpl _$$AgentModelImplFromJson(Map<String, dynamic> json) =>
       isBaseContent: json['isBaseContent'] as bool,
       role: json['role'] == null
           ? null
-          : RoleModel.fromJson(json['role'] as Map<String, dynamic>),
+          : ApiRole.fromJson(json['role'] as Map<String, dynamic>),
       recruitmentData: json['recruitmentData'] == null
           ? null
-          : RecruitmentDataModel.fromJson(
+          : ApiRecruitmentData.fromJson(
               json['recruitmentData'] as Map<String, dynamic>),
       abilities: (json['abilities'] as List<dynamic>)
-          .map((e) => AbilityModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => ApiAbility.fromJson(e as Map<String, dynamic>))
           .toList(),
-      voiceLine: json['voiceLine'],
     );
 
-Map<String, dynamic> _$$AgentModelImplToJson(_$AgentModelImpl instance) =>
+Map<String, dynamic> _$$ApiAgentImplToJson(_$ApiAgentImpl instance) =>
     <String, dynamic>{
       'uuid': instance.uuid,
       'displayName': instance.displayName,
@@ -67,18 +66,17 @@ Map<String, dynamic> _$$AgentModelImplToJson(_$AgentModelImpl instance) =>
       'role': instance.role,
       'recruitmentData': instance.recruitmentData,
       'abilities': instance.abilities,
-      'voiceLine': instance.voiceLine,
     };
 
-_$AbilityModelImpl _$$AbilityModelImplFromJson(Map<String, dynamic> json) =>
-    _$AbilityModelImpl(
+_$ApiAbilityImpl _$$ApiAbilityImplFromJson(Map<String, dynamic> json) =>
+    _$ApiAbilityImpl(
       slot: json['slot'] as String,
       displayName: json['displayName'] as String,
       description: json['description'] as String,
       displayIcon: json['displayIcon'] as String?,
     );
 
-Map<String, dynamic> _$$AbilityModelImplToJson(_$AbilityModelImpl instance) =>
+Map<String, dynamic> _$$ApiAbilityImplToJson(_$ApiAbilityImpl instance) =>
     <String, dynamic>{
       'slot': instance.slot,
       'displayName': instance.displayName,
@@ -86,9 +84,9 @@ Map<String, dynamic> _$$AbilityModelImplToJson(_$AbilityModelImpl instance) =>
       'displayIcon': instance.displayIcon,
     };
 
-_$RecruitmentDataModelImpl _$$RecruitmentDataModelImplFromJson(
+_$ApiRecruitmentDataImpl _$$ApiRecruitmentDataImplFromJson(
         Map<String, dynamic> json) =>
-    _$RecruitmentDataModelImpl(
+    _$ApiRecruitmentDataImpl(
       counterId: json['counterId'] as String,
       milestoneId: json['milestoneId'] as String,
       milestoneThreshold: json['milestoneThreshold'] as int,
@@ -98,8 +96,8 @@ _$RecruitmentDataModelImpl _$$RecruitmentDataModelImplFromJson(
       endDate: DateTime.parse(json['endDate'] as String),
     );
 
-Map<String, dynamic> _$$RecruitmentDataModelImplToJson(
-        _$RecruitmentDataModelImpl instance) =>
+Map<String, dynamic> _$$ApiRecruitmentDataImplToJson(
+        _$ApiRecruitmentDataImpl instance) =>
     <String, dynamic>{
       'counterId': instance.counterId,
       'milestoneId': instance.milestoneId,
@@ -110,8 +108,8 @@ Map<String, dynamic> _$$RecruitmentDataModelImplToJson(
       'endDate': instance.endDate.toIso8601String(),
     };
 
-_$RoleModelImpl _$$RoleModelImplFromJson(Map<String, dynamic> json) =>
-    _$RoleModelImpl(
+_$ApiRoleImpl _$$ApiRoleImplFromJson(Map<String, dynamic> json) =>
+    _$ApiRoleImpl(
       uuid: json['uuid'] as String,
       displayName: json['displayName'] as String,
       description: json['description'] as String,
@@ -119,7 +117,7 @@ _$RoleModelImpl _$$RoleModelImplFromJson(Map<String, dynamic> json) =>
       assetPath: json['assetPath'] as String,
     );
 
-Map<String, dynamic> _$$RoleModelImplToJson(_$RoleModelImpl instance) =>
+Map<String, dynamic> _$$ApiRoleImplToJson(_$ApiRoleImpl instance) =>
     <String, dynamic>{
       'uuid': instance.uuid,
       'displayName': instance.displayName,

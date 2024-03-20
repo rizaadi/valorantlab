@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'agent.dart';
+part of 'api_agent.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-AgentModel _$AgentModelFromJson(Map<String, dynamic> json) {
-  return _AgentModel.fromJson(json);
+ApiAgent _$ApiAgentFromJson(Map<String, dynamic> json) {
+  return _ApiAgent.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AgentModel {
+mixin _$ApiAgent {
   String get uuid => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -39,23 +39,20 @@ mixin _$AgentModel {
   bool get isPlayableCharacter => throw _privateConstructorUsedError;
   bool get isAvailableForTest => throw _privateConstructorUsedError;
   bool get isBaseContent => throw _privateConstructorUsedError;
-  RoleModel? get role => throw _privateConstructorUsedError;
-  RecruitmentDataModel? get recruitmentData =>
-      throw _privateConstructorUsedError;
-  List<AbilityModel> get abilities => throw _privateConstructorUsedError;
-  dynamic get voiceLine => throw _privateConstructorUsedError;
+  ApiRole? get role => throw _privateConstructorUsedError;
+  ApiRecruitmentData? get recruitmentData => throw _privateConstructorUsedError;
+  List<ApiAbility> get abilities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AgentModelCopyWith<AgentModel> get copyWith =>
+  $ApiAgentCopyWith<ApiAgent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AgentModelCopyWith<$Res> {
-  factory $AgentModelCopyWith(
-          AgentModel value, $Res Function(AgentModel) then) =
-      _$AgentModelCopyWithImpl<$Res, AgentModel>;
+abstract class $ApiAgentCopyWith<$Res> {
+  factory $ApiAgentCopyWith(ApiAgent value, $Res Function(ApiAgent) then) =
+      _$ApiAgentCopyWithImpl<$Res, ApiAgent>;
   @useResult
   $Res call(
       {String uuid,
@@ -76,19 +73,18 @@ abstract class $AgentModelCopyWith<$Res> {
       bool isPlayableCharacter,
       bool isAvailableForTest,
       bool isBaseContent,
-      RoleModel? role,
-      RecruitmentDataModel? recruitmentData,
-      List<AbilityModel> abilities,
-      dynamic voiceLine});
+      ApiRole? role,
+      ApiRecruitmentData? recruitmentData,
+      List<ApiAbility> abilities});
 
-  $RoleModelCopyWith<$Res>? get role;
-  $RecruitmentDataModelCopyWith<$Res>? get recruitmentData;
+  $ApiRoleCopyWith<$Res>? get role;
+  $ApiRecruitmentDataCopyWith<$Res>? get recruitmentData;
 }
 
 /// @nodoc
-class _$AgentModelCopyWithImpl<$Res, $Val extends AgentModel>
-    implements $AgentModelCopyWith<$Res> {
-  _$AgentModelCopyWithImpl(this._value, this._then);
+class _$ApiAgentCopyWithImpl<$Res, $Val extends ApiAgent>
+    implements $ApiAgentCopyWith<$Res> {
+  _$ApiAgentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -119,7 +115,6 @@ class _$AgentModelCopyWithImpl<$Res, $Val extends AgentModel>
     Object? role = freezed,
     Object? recruitmentData = freezed,
     Object? abilities = null,
-    Object? voiceLine = freezed,
   }) {
     return _then(_value.copyWith(
       uuid: null == uuid
@@ -197,54 +192,49 @@ class _$AgentModelCopyWithImpl<$Res, $Val extends AgentModel>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as RoleModel?,
+              as ApiRole?,
       recruitmentData: freezed == recruitmentData
           ? _value.recruitmentData
           : recruitmentData // ignore: cast_nullable_to_non_nullable
-              as RecruitmentDataModel?,
+              as ApiRecruitmentData?,
       abilities: null == abilities
           ? _value.abilities
           : abilities // ignore: cast_nullable_to_non_nullable
-              as List<AbilityModel>,
-      voiceLine: freezed == voiceLine
-          ? _value.voiceLine
-          : voiceLine // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<ApiAbility>,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RoleModelCopyWith<$Res>? get role {
+  $ApiRoleCopyWith<$Res>? get role {
     if (_value.role == null) {
       return null;
     }
 
-    return $RoleModelCopyWith<$Res>(_value.role!, (value) {
+    return $ApiRoleCopyWith<$Res>(_value.role!, (value) {
       return _then(_value.copyWith(role: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RecruitmentDataModelCopyWith<$Res>? get recruitmentData {
+  $ApiRecruitmentDataCopyWith<$Res>? get recruitmentData {
     if (_value.recruitmentData == null) {
       return null;
     }
 
-    return $RecruitmentDataModelCopyWith<$Res>(_value.recruitmentData!,
-        (value) {
+    return $ApiRecruitmentDataCopyWith<$Res>(_value.recruitmentData!, (value) {
       return _then(_value.copyWith(recruitmentData: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$AgentModelImplCopyWith<$Res>
-    implements $AgentModelCopyWith<$Res> {
-  factory _$$AgentModelImplCopyWith(
-          _$AgentModelImpl value, $Res Function(_$AgentModelImpl) then) =
-      __$$AgentModelImplCopyWithImpl<$Res>;
+abstract class _$$ApiAgentImplCopyWith<$Res>
+    implements $ApiAgentCopyWith<$Res> {
+  factory _$$ApiAgentImplCopyWith(
+          _$ApiAgentImpl value, $Res Function(_$ApiAgentImpl) then) =
+      __$$ApiAgentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -266,23 +256,22 @@ abstract class _$$AgentModelImplCopyWith<$Res>
       bool isPlayableCharacter,
       bool isAvailableForTest,
       bool isBaseContent,
-      RoleModel? role,
-      RecruitmentDataModel? recruitmentData,
-      List<AbilityModel> abilities,
-      dynamic voiceLine});
+      ApiRole? role,
+      ApiRecruitmentData? recruitmentData,
+      List<ApiAbility> abilities});
 
   @override
-  $RoleModelCopyWith<$Res>? get role;
+  $ApiRoleCopyWith<$Res>? get role;
   @override
-  $RecruitmentDataModelCopyWith<$Res>? get recruitmentData;
+  $ApiRecruitmentDataCopyWith<$Res>? get recruitmentData;
 }
 
 /// @nodoc
-class __$$AgentModelImplCopyWithImpl<$Res>
-    extends _$AgentModelCopyWithImpl<$Res, _$AgentModelImpl>
-    implements _$$AgentModelImplCopyWith<$Res> {
-  __$$AgentModelImplCopyWithImpl(
-      _$AgentModelImpl _value, $Res Function(_$AgentModelImpl) _then)
+class __$$ApiAgentImplCopyWithImpl<$Res>
+    extends _$ApiAgentCopyWithImpl<$Res, _$ApiAgentImpl>
+    implements _$$ApiAgentImplCopyWith<$Res> {
+  __$$ApiAgentImplCopyWithImpl(
+      _$ApiAgentImpl _value, $Res Function(_$ApiAgentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -309,9 +298,8 @@ class __$$AgentModelImplCopyWithImpl<$Res>
     Object? role = freezed,
     Object? recruitmentData = freezed,
     Object? abilities = null,
-    Object? voiceLine = freezed,
   }) {
-    return _then(_$AgentModelImpl(
+    return _then(_$ApiAgentImpl(
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
@@ -387,27 +375,23 @@ class __$$AgentModelImplCopyWithImpl<$Res>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as RoleModel?,
+              as ApiRole?,
       recruitmentData: freezed == recruitmentData
           ? _value.recruitmentData
           : recruitmentData // ignore: cast_nullable_to_non_nullable
-              as RecruitmentDataModel?,
+              as ApiRecruitmentData?,
       abilities: null == abilities
           ? _value._abilities
           : abilities // ignore: cast_nullable_to_non_nullable
-              as List<AbilityModel>,
-      voiceLine: freezed == voiceLine
-          ? _value.voiceLine
-          : voiceLine // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<ApiAbility>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AgentModelImpl implements _AgentModel {
-  const _$AgentModelImpl(
+class _$ApiAgentImpl with DiagnosticableTreeMixin implements _ApiAgent {
+  const _$ApiAgentImpl(
       {required this.uuid,
       required this.displayName,
       required this.description,
@@ -428,14 +412,13 @@ class _$AgentModelImpl implements _AgentModel {
       required this.isBaseContent,
       required this.role,
       required this.recruitmentData,
-      required final List<AbilityModel> abilities,
-      required this.voiceLine})
+      required final List<ApiAbility> abilities})
       : _characterTags = characterTags,
         _backgroundGradientColors = backgroundGradientColors,
         _abilities = abilities;
 
-  factory _$AgentModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AgentModelImplFromJson(json);
+  factory _$ApiAgentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiAgentImplFromJson(json);
 
   @override
   final String uuid;
@@ -489,30 +472,57 @@ class _$AgentModelImpl implements _AgentModel {
   @override
   final bool isBaseContent;
   @override
-  final RoleModel? role;
+  final ApiRole? role;
   @override
-  final RecruitmentDataModel? recruitmentData;
-  final List<AbilityModel> _abilities;
+  final ApiRecruitmentData? recruitmentData;
+  final List<ApiAbility> _abilities;
   @override
-  List<AbilityModel> get abilities {
+  List<ApiAbility> get abilities {
     if (_abilities is EqualUnmodifiableListView) return _abilities;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_abilities);
   }
 
   @override
-  final dynamic voiceLine;
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ApiAgent(uuid: $uuid, displayName: $displayName, description: $description, developerName: $developerName, characterTags: $characterTags, displayIcon: $displayIcon, displayIconSmall: $displayIconSmall, bustPortrait: $bustPortrait, fullPortrait: $fullPortrait, fullPortraitV2: $fullPortraitV2, killfeedPortrait: $killfeedPortrait, background: $background, backgroundGradientColors: $backgroundGradientColors, assetPath: $assetPath, isFullPortraitRightFacing: $isFullPortraitRightFacing, isPlayableCharacter: $isPlayableCharacter, isAvailableForTest: $isAvailableForTest, isBaseContent: $isBaseContent, role: $role, recruitmentData: $recruitmentData, abilities: $abilities)';
+  }
 
   @override
-  String toString() {
-    return 'AgentModel(uuid: $uuid, displayName: $displayName, description: $description, developerName: $developerName, characterTags: $characterTags, displayIcon: $displayIcon, displayIconSmall: $displayIconSmall, bustPortrait: $bustPortrait, fullPortrait: $fullPortrait, fullPortraitV2: $fullPortraitV2, killfeedPortrait: $killfeedPortrait, background: $background, backgroundGradientColors: $backgroundGradientColors, assetPath: $assetPath, isFullPortraitRightFacing: $isFullPortraitRightFacing, isPlayableCharacter: $isPlayableCharacter, isAvailableForTest: $isAvailableForTest, isBaseContent: $isBaseContent, role: $role, recruitmentData: $recruitmentData, abilities: $abilities, voiceLine: $voiceLine)';
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiAgent'))
+      ..add(DiagnosticsProperty('uuid', uuid))
+      ..add(DiagnosticsProperty('displayName', displayName))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('developerName', developerName))
+      ..add(DiagnosticsProperty('characterTags', characterTags))
+      ..add(DiagnosticsProperty('displayIcon', displayIcon))
+      ..add(DiagnosticsProperty('displayIconSmall', displayIconSmall))
+      ..add(DiagnosticsProperty('bustPortrait', bustPortrait))
+      ..add(DiagnosticsProperty('fullPortrait', fullPortrait))
+      ..add(DiagnosticsProperty('fullPortraitV2', fullPortraitV2))
+      ..add(DiagnosticsProperty('killfeedPortrait', killfeedPortrait))
+      ..add(DiagnosticsProperty('background', background))
+      ..add(DiagnosticsProperty(
+          'backgroundGradientColors', backgroundGradientColors))
+      ..add(DiagnosticsProperty('assetPath', assetPath))
+      ..add(DiagnosticsProperty(
+          'isFullPortraitRightFacing', isFullPortraitRightFacing))
+      ..add(DiagnosticsProperty('isPlayableCharacter', isPlayableCharacter))
+      ..add(DiagnosticsProperty('isAvailableForTest', isAvailableForTest))
+      ..add(DiagnosticsProperty('isBaseContent', isBaseContent))
+      ..add(DiagnosticsProperty('role', role))
+      ..add(DiagnosticsProperty('recruitmentData', recruitmentData))
+      ..add(DiagnosticsProperty('abilities', abilities));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AgentModelImpl &&
+            other is _$ApiAgentImpl &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
@@ -553,8 +563,7 @@ class _$AgentModelImpl implements _AgentModel {
             (identical(other.recruitmentData, recruitmentData) ||
                 other.recruitmentData == recruitmentData) &&
             const DeepCollectionEquality()
-                .equals(other._abilities, _abilities) &&
-            const DeepCollectionEquality().equals(other.voiceLine, voiceLine));
+                .equals(other._abilities, _abilities));
   }
 
   @JsonKey(ignore: true)
@@ -581,26 +590,25 @@ class _$AgentModelImpl implements _AgentModel {
         isBaseContent,
         role,
         recruitmentData,
-        const DeepCollectionEquality().hash(_abilities),
-        const DeepCollectionEquality().hash(voiceLine)
+        const DeepCollectionEquality().hash(_abilities)
       ]);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AgentModelImplCopyWith<_$AgentModelImpl> get copyWith =>
-      __$$AgentModelImplCopyWithImpl<_$AgentModelImpl>(this, _$identity);
+  _$$ApiAgentImplCopyWith<_$ApiAgentImpl> get copyWith =>
+      __$$ApiAgentImplCopyWithImpl<_$ApiAgentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AgentModelImplToJson(
+    return _$$ApiAgentImplToJson(
       this,
     );
   }
 }
 
-abstract class _AgentModel implements AgentModel {
-  const factory _AgentModel(
+abstract class _ApiAgent implements ApiAgent {
+  const factory _ApiAgent(
       {required final String uuid,
       required final String displayName,
       required final String description,
@@ -619,13 +627,12 @@ abstract class _AgentModel implements AgentModel {
       required final bool isPlayableCharacter,
       required final bool isAvailableForTest,
       required final bool isBaseContent,
-      required final RoleModel? role,
-      required final RecruitmentDataModel? recruitmentData,
-      required final List<AbilityModel> abilities,
-      required final dynamic voiceLine}) = _$AgentModelImpl;
+      required final ApiRole? role,
+      required final ApiRecruitmentData? recruitmentData,
+      required final List<ApiAbility> abilities}) = _$ApiAgentImpl;
 
-  factory _AgentModel.fromJson(Map<String, dynamic> json) =
-      _$AgentModelImpl.fromJson;
+  factory _ApiAgent.fromJson(Map<String, dynamic> json) =
+      _$ApiAgentImpl.fromJson;
 
   @override
   String get uuid;
@@ -664,25 +671,23 @@ abstract class _AgentModel implements AgentModel {
   @override
   bool get isBaseContent;
   @override
-  RoleModel? get role;
+  ApiRole? get role;
   @override
-  RecruitmentDataModel? get recruitmentData;
+  ApiRecruitmentData? get recruitmentData;
   @override
-  List<AbilityModel> get abilities;
-  @override
-  dynamic get voiceLine;
+  List<ApiAbility> get abilities;
   @override
   @JsonKey(ignore: true)
-  _$$AgentModelImplCopyWith<_$AgentModelImpl> get copyWith =>
+  _$$ApiAgentImplCopyWith<_$ApiAgentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-AbilityModel _$AbilityModelFromJson(Map<String, dynamic> json) {
-  return _AbilityModel.fromJson(json);
+ApiAbility _$ApiAbilityFromJson(Map<String, dynamic> json) {
+  return _ApiAbility.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AbilityModel {
+mixin _$ApiAbility {
   String get slot => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -690,15 +695,15 @@ mixin _$AbilityModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AbilityModelCopyWith<AbilityModel> get copyWith =>
+  $ApiAbilityCopyWith<ApiAbility> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AbilityModelCopyWith<$Res> {
-  factory $AbilityModelCopyWith(
-          AbilityModel value, $Res Function(AbilityModel) then) =
-      _$AbilityModelCopyWithImpl<$Res, AbilityModel>;
+abstract class $ApiAbilityCopyWith<$Res> {
+  factory $ApiAbilityCopyWith(
+          ApiAbility value, $Res Function(ApiAbility) then) =
+      _$ApiAbilityCopyWithImpl<$Res, ApiAbility>;
   @useResult
   $Res call(
       {String slot,
@@ -708,9 +713,9 @@ abstract class $AbilityModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AbilityModelCopyWithImpl<$Res, $Val extends AbilityModel>
-    implements $AbilityModelCopyWith<$Res> {
-  _$AbilityModelCopyWithImpl(this._value, this._then);
+class _$ApiAbilityCopyWithImpl<$Res, $Val extends ApiAbility>
+    implements $ApiAbilityCopyWith<$Res> {
+  _$ApiAbilityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -747,11 +752,11 @@ class _$AbilityModelCopyWithImpl<$Res, $Val extends AbilityModel>
 }
 
 /// @nodoc
-abstract class _$$AbilityModelImplCopyWith<$Res>
-    implements $AbilityModelCopyWith<$Res> {
-  factory _$$AbilityModelImplCopyWith(
-          _$AbilityModelImpl value, $Res Function(_$AbilityModelImpl) then) =
-      __$$AbilityModelImplCopyWithImpl<$Res>;
+abstract class _$$ApiAbilityImplCopyWith<$Res>
+    implements $ApiAbilityCopyWith<$Res> {
+  factory _$$ApiAbilityImplCopyWith(
+          _$ApiAbilityImpl value, $Res Function(_$ApiAbilityImpl) then) =
+      __$$ApiAbilityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -762,11 +767,11 @@ abstract class _$$AbilityModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AbilityModelImplCopyWithImpl<$Res>
-    extends _$AbilityModelCopyWithImpl<$Res, _$AbilityModelImpl>
-    implements _$$AbilityModelImplCopyWith<$Res> {
-  __$$AbilityModelImplCopyWithImpl(
-      _$AbilityModelImpl _value, $Res Function(_$AbilityModelImpl) _then)
+class __$$ApiAbilityImplCopyWithImpl<$Res>
+    extends _$ApiAbilityCopyWithImpl<$Res, _$ApiAbilityImpl>
+    implements _$$ApiAbilityImplCopyWith<$Res> {
+  __$$ApiAbilityImplCopyWithImpl(
+      _$ApiAbilityImpl _value, $Res Function(_$ApiAbilityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -777,7 +782,7 @@ class __$$AbilityModelImplCopyWithImpl<$Res>
     Object? description = null,
     Object? displayIcon = freezed,
   }) {
-    return _then(_$AbilityModelImpl(
+    return _then(_$ApiAbilityImpl(
       slot: null == slot
           ? _value.slot
           : slot // ignore: cast_nullable_to_non_nullable
@@ -800,15 +805,15 @@ class __$$AbilityModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AbilityModelImpl implements _AbilityModel {
-  const _$AbilityModelImpl(
+class _$ApiAbilityImpl with DiagnosticableTreeMixin implements _ApiAbility {
+  const _$ApiAbilityImpl(
       {required this.slot,
       required this.displayName,
       required this.description,
       required this.displayIcon});
 
-  factory _$AbilityModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AbilityModelImplFromJson(json);
+  factory _$ApiAbilityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiAbilityImplFromJson(json);
 
   @override
   final String slot;
@@ -820,15 +825,26 @@ class _$AbilityModelImpl implements _AbilityModel {
   final String? displayIcon;
 
   @override
-  String toString() {
-    return 'AbilityModel(slot: $slot, displayName: $displayName, description: $description, displayIcon: $displayIcon)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ApiAbility(slot: $slot, displayName: $displayName, description: $description, displayIcon: $displayIcon)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiAbility'))
+      ..add(DiagnosticsProperty('slot', slot))
+      ..add(DiagnosticsProperty('displayName', displayName))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('displayIcon', displayIcon));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AbilityModelImpl &&
+            other is _$ApiAbilityImpl &&
             (identical(other.slot, slot) || other.slot == slot) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
@@ -846,26 +862,26 @@ class _$AbilityModelImpl implements _AbilityModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AbilityModelImplCopyWith<_$AbilityModelImpl> get copyWith =>
-      __$$AbilityModelImplCopyWithImpl<_$AbilityModelImpl>(this, _$identity);
+  _$$ApiAbilityImplCopyWith<_$ApiAbilityImpl> get copyWith =>
+      __$$ApiAbilityImplCopyWithImpl<_$ApiAbilityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AbilityModelImplToJson(
+    return _$$ApiAbilityImplToJson(
       this,
     );
   }
 }
 
-abstract class _AbilityModel implements AbilityModel {
-  const factory _AbilityModel(
+abstract class _ApiAbility implements ApiAbility {
+  const factory _ApiAbility(
       {required final String slot,
       required final String displayName,
       required final String description,
-      required final String? displayIcon}) = _$AbilityModelImpl;
+      required final String? displayIcon}) = _$ApiAbilityImpl;
 
-  factory _AbilityModel.fromJson(Map<String, dynamic> json) =
-      _$AbilityModelImpl.fromJson;
+  factory _ApiAbility.fromJson(Map<String, dynamic> json) =
+      _$ApiAbilityImpl.fromJson;
 
   @override
   String get slot;
@@ -877,16 +893,16 @@ abstract class _AbilityModel implements AbilityModel {
   String? get displayIcon;
   @override
   @JsonKey(ignore: true)
-  _$$AbilityModelImplCopyWith<_$AbilityModelImpl> get copyWith =>
+  _$$ApiAbilityImplCopyWith<_$ApiAbilityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-RecruitmentDataModel _$RecruitmentDataModelFromJson(Map<String, dynamic> json) {
-  return _RecruitmentDataModel.fromJson(json);
+ApiRecruitmentData _$ApiRecruitmentDataFromJson(Map<String, dynamic> json) {
+  return _ApiRecruitmentData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RecruitmentDataModel {
+mixin _$ApiRecruitmentData {
   String get counterId => throw _privateConstructorUsedError;
   String get milestoneId => throw _privateConstructorUsedError;
   int get milestoneThreshold => throw _privateConstructorUsedError;
@@ -897,15 +913,15 @@ mixin _$RecruitmentDataModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RecruitmentDataModelCopyWith<RecruitmentDataModel> get copyWith =>
+  $ApiRecruitmentDataCopyWith<ApiRecruitmentData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RecruitmentDataModelCopyWith<$Res> {
-  factory $RecruitmentDataModelCopyWith(RecruitmentDataModel value,
-          $Res Function(RecruitmentDataModel) then) =
-      _$RecruitmentDataModelCopyWithImpl<$Res, RecruitmentDataModel>;
+abstract class $ApiRecruitmentDataCopyWith<$Res> {
+  factory $ApiRecruitmentDataCopyWith(
+          ApiRecruitmentData value, $Res Function(ApiRecruitmentData) then) =
+      _$ApiRecruitmentDataCopyWithImpl<$Res, ApiRecruitmentData>;
   @useResult
   $Res call(
       {String counterId,
@@ -918,10 +934,9 @@ abstract class $RecruitmentDataModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecruitmentDataModelCopyWithImpl<$Res,
-        $Val extends RecruitmentDataModel>
-    implements $RecruitmentDataModelCopyWith<$Res> {
-  _$RecruitmentDataModelCopyWithImpl(this._value, this._then);
+class _$ApiRecruitmentDataCopyWithImpl<$Res, $Val extends ApiRecruitmentData>
+    implements $ApiRecruitmentDataCopyWith<$Res> {
+  _$ApiRecruitmentDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -973,11 +988,11 @@ class _$RecruitmentDataModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$RecruitmentDataModelImplCopyWith<$Res>
-    implements $RecruitmentDataModelCopyWith<$Res> {
-  factory _$$RecruitmentDataModelImplCopyWith(_$RecruitmentDataModelImpl value,
-          $Res Function(_$RecruitmentDataModelImpl) then) =
-      __$$RecruitmentDataModelImplCopyWithImpl<$Res>;
+abstract class _$$ApiRecruitmentDataImplCopyWith<$Res>
+    implements $ApiRecruitmentDataCopyWith<$Res> {
+  factory _$$ApiRecruitmentDataImplCopyWith(_$ApiRecruitmentDataImpl value,
+          $Res Function(_$ApiRecruitmentDataImpl) then) =
+      __$$ApiRecruitmentDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -991,11 +1006,11 @@ abstract class _$$RecruitmentDataModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RecruitmentDataModelImplCopyWithImpl<$Res>
-    extends _$RecruitmentDataModelCopyWithImpl<$Res, _$RecruitmentDataModelImpl>
-    implements _$$RecruitmentDataModelImplCopyWith<$Res> {
-  __$$RecruitmentDataModelImplCopyWithImpl(_$RecruitmentDataModelImpl _value,
-      $Res Function(_$RecruitmentDataModelImpl) _then)
+class __$$ApiRecruitmentDataImplCopyWithImpl<$Res>
+    extends _$ApiRecruitmentDataCopyWithImpl<$Res, _$ApiRecruitmentDataImpl>
+    implements _$$ApiRecruitmentDataImplCopyWith<$Res> {
+  __$$ApiRecruitmentDataImplCopyWithImpl(_$ApiRecruitmentDataImpl _value,
+      $Res Function(_$ApiRecruitmentDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1009,7 +1024,7 @@ class __$$RecruitmentDataModelImplCopyWithImpl<$Res>
     Object? startDate = null,
     Object? endDate = null,
   }) {
-    return _then(_$RecruitmentDataModelImpl(
+    return _then(_$ApiRecruitmentDataImpl(
       counterId: null == counterId
           ? _value.counterId
           : counterId // ignore: cast_nullable_to_non_nullable
@@ -1044,8 +1059,10 @@ class __$$RecruitmentDataModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RecruitmentDataModelImpl implements _RecruitmentDataModel {
-  const _$RecruitmentDataModelImpl(
+class _$ApiRecruitmentDataImpl
+    with DiagnosticableTreeMixin
+    implements _ApiRecruitmentData {
+  const _$ApiRecruitmentDataImpl(
       {required this.counterId,
       required this.milestoneId,
       required this.milestoneThreshold,
@@ -1054,8 +1071,8 @@ class _$RecruitmentDataModelImpl implements _RecruitmentDataModel {
       required this.startDate,
       required this.endDate});
 
-  factory _$RecruitmentDataModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RecruitmentDataModelImplFromJson(json);
+  factory _$ApiRecruitmentDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiRecruitmentDataImplFromJson(json);
 
   @override
   final String counterId;
@@ -1073,15 +1090,30 @@ class _$RecruitmentDataModelImpl implements _RecruitmentDataModel {
   final DateTime endDate;
 
   @override
-  String toString() {
-    return 'RecruitmentDataModel(counterId: $counterId, milestoneId: $milestoneId, milestoneThreshold: $milestoneThreshold, useLevelVpCostOverride: $useLevelVpCostOverride, levelVpCostOverride: $levelVpCostOverride, startDate: $startDate, endDate: $endDate)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ApiRecruitmentData(counterId: $counterId, milestoneId: $milestoneId, milestoneThreshold: $milestoneThreshold, useLevelVpCostOverride: $useLevelVpCostOverride, levelVpCostOverride: $levelVpCostOverride, startDate: $startDate, endDate: $endDate)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiRecruitmentData'))
+      ..add(DiagnosticsProperty('counterId', counterId))
+      ..add(DiagnosticsProperty('milestoneId', milestoneId))
+      ..add(DiagnosticsProperty('milestoneThreshold', milestoneThreshold))
+      ..add(
+          DiagnosticsProperty('useLevelVpCostOverride', useLevelVpCostOverride))
+      ..add(DiagnosticsProperty('levelVpCostOverride', levelVpCostOverride))
+      ..add(DiagnosticsProperty('startDate', startDate))
+      ..add(DiagnosticsProperty('endDate', endDate));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RecruitmentDataModelImpl &&
+            other is _$ApiRecruitmentDataImpl &&
             (identical(other.counterId, counterId) ||
                 other.counterId == counterId) &&
             (identical(other.milestoneId, milestoneId) ||
@@ -1112,31 +1144,30 @@ class _$RecruitmentDataModelImpl implements _RecruitmentDataModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecruitmentDataModelImplCopyWith<_$RecruitmentDataModelImpl>
-      get copyWith =>
-          __$$RecruitmentDataModelImplCopyWithImpl<_$RecruitmentDataModelImpl>(
-              this, _$identity);
+  _$$ApiRecruitmentDataImplCopyWith<_$ApiRecruitmentDataImpl> get copyWith =>
+      __$$ApiRecruitmentDataImplCopyWithImpl<_$ApiRecruitmentDataImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RecruitmentDataModelImplToJson(
+    return _$$ApiRecruitmentDataImplToJson(
       this,
     );
   }
 }
 
-abstract class _RecruitmentDataModel implements RecruitmentDataModel {
-  const factory _RecruitmentDataModel(
+abstract class _ApiRecruitmentData implements ApiRecruitmentData {
+  const factory _ApiRecruitmentData(
       {required final String counterId,
       required final String milestoneId,
       required final int milestoneThreshold,
       required final bool useLevelVpCostOverride,
       required final int levelVpCostOverride,
       required final DateTime startDate,
-      required final DateTime endDate}) = _$RecruitmentDataModelImpl;
+      required final DateTime endDate}) = _$ApiRecruitmentDataImpl;
 
-  factory _RecruitmentDataModel.fromJson(Map<String, dynamic> json) =
-      _$RecruitmentDataModelImpl.fromJson;
+  factory _ApiRecruitmentData.fromJson(Map<String, dynamic> json) =
+      _$ApiRecruitmentDataImpl.fromJson;
 
   @override
   String get counterId;
@@ -1154,16 +1185,16 @@ abstract class _RecruitmentDataModel implements RecruitmentDataModel {
   DateTime get endDate;
   @override
   @JsonKey(ignore: true)
-  _$$RecruitmentDataModelImplCopyWith<_$RecruitmentDataModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ApiRecruitmentDataImplCopyWith<_$ApiRecruitmentDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-RoleModel _$RoleModelFromJson(Map<String, dynamic> json) {
-  return _RoleModel.fromJson(json);
+ApiRole _$ApiRoleFromJson(Map<String, dynamic> json) {
+  return _ApiRole.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RoleModel {
+mixin _$ApiRole {
   String get uuid => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -1172,14 +1203,13 @@ mixin _$RoleModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RoleModelCopyWith<RoleModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ApiRoleCopyWith<ApiRole> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RoleModelCopyWith<$Res> {
-  factory $RoleModelCopyWith(RoleModel value, $Res Function(RoleModel) then) =
-      _$RoleModelCopyWithImpl<$Res, RoleModel>;
+abstract class $ApiRoleCopyWith<$Res> {
+  factory $ApiRoleCopyWith(ApiRole value, $Res Function(ApiRole) then) =
+      _$ApiRoleCopyWithImpl<$Res, ApiRole>;
   @useResult
   $Res call(
       {String uuid,
@@ -1190,9 +1220,9 @@ abstract class $RoleModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RoleModelCopyWithImpl<$Res, $Val extends RoleModel>
-    implements $RoleModelCopyWith<$Res> {
-  _$RoleModelCopyWithImpl(this._value, this._then);
+class _$ApiRoleCopyWithImpl<$Res, $Val extends ApiRole>
+    implements $ApiRoleCopyWith<$Res> {
+  _$ApiRoleCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1234,11 +1264,10 @@ class _$RoleModelCopyWithImpl<$Res, $Val extends RoleModel>
 }
 
 /// @nodoc
-abstract class _$$RoleModelImplCopyWith<$Res>
-    implements $RoleModelCopyWith<$Res> {
-  factory _$$RoleModelImplCopyWith(
-          _$RoleModelImpl value, $Res Function(_$RoleModelImpl) then) =
-      __$$RoleModelImplCopyWithImpl<$Res>;
+abstract class _$$ApiRoleImplCopyWith<$Res> implements $ApiRoleCopyWith<$Res> {
+  factory _$$ApiRoleImplCopyWith(
+          _$ApiRoleImpl value, $Res Function(_$ApiRoleImpl) then) =
+      __$$ApiRoleImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1250,11 +1279,11 @@ abstract class _$$RoleModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RoleModelImplCopyWithImpl<$Res>
-    extends _$RoleModelCopyWithImpl<$Res, _$RoleModelImpl>
-    implements _$$RoleModelImplCopyWith<$Res> {
-  __$$RoleModelImplCopyWithImpl(
-      _$RoleModelImpl _value, $Res Function(_$RoleModelImpl) _then)
+class __$$ApiRoleImplCopyWithImpl<$Res>
+    extends _$ApiRoleCopyWithImpl<$Res, _$ApiRoleImpl>
+    implements _$$ApiRoleImplCopyWith<$Res> {
+  __$$ApiRoleImplCopyWithImpl(
+      _$ApiRoleImpl _value, $Res Function(_$ApiRoleImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1266,7 +1295,7 @@ class __$$RoleModelImplCopyWithImpl<$Res>
     Object? displayIcon = null,
     Object? assetPath = null,
   }) {
-    return _then(_$RoleModelImpl(
+    return _then(_$ApiRoleImpl(
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
@@ -1293,16 +1322,16 @@ class __$$RoleModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RoleModelImpl implements _RoleModel {
-  const _$RoleModelImpl(
+class _$ApiRoleImpl with DiagnosticableTreeMixin implements _ApiRole {
+  const _$ApiRoleImpl(
       {required this.uuid,
       required this.displayName,
       required this.description,
       required this.displayIcon,
       required this.assetPath});
 
-  factory _$RoleModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RoleModelImplFromJson(json);
+  factory _$ApiRoleImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ApiRoleImplFromJson(json);
 
   @override
   final String uuid;
@@ -1316,15 +1345,27 @@ class _$RoleModelImpl implements _RoleModel {
   final String assetPath;
 
   @override
-  String toString() {
-    return 'RoleModel(uuid: $uuid, displayName: $displayName, description: $description, displayIcon: $displayIcon, assetPath: $assetPath)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ApiRole(uuid: $uuid, displayName: $displayName, description: $description, displayIcon: $displayIcon, assetPath: $assetPath)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ApiRole'))
+      ..add(DiagnosticsProperty('uuid', uuid))
+      ..add(DiagnosticsProperty('displayName', displayName))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('displayIcon', displayIcon))
+      ..add(DiagnosticsProperty('assetPath', assetPath));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RoleModelImpl &&
+            other is _$ApiRoleImpl &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
@@ -1344,27 +1385,26 @@ class _$RoleModelImpl implements _RoleModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RoleModelImplCopyWith<_$RoleModelImpl> get copyWith =>
-      __$$RoleModelImplCopyWithImpl<_$RoleModelImpl>(this, _$identity);
+  _$$ApiRoleImplCopyWith<_$ApiRoleImpl> get copyWith =>
+      __$$ApiRoleImplCopyWithImpl<_$ApiRoleImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RoleModelImplToJson(
+    return _$$ApiRoleImplToJson(
       this,
     );
   }
 }
 
-abstract class _RoleModel implements RoleModel {
-  const factory _RoleModel(
+abstract class _ApiRole implements ApiRole {
+  const factory _ApiRole(
       {required final String uuid,
       required final String displayName,
       required final String description,
       required final String displayIcon,
-      required final String assetPath}) = _$RoleModelImpl;
+      required final String assetPath}) = _$ApiRoleImpl;
 
-  factory _RoleModel.fromJson(Map<String, dynamic> json) =
-      _$RoleModelImpl.fromJson;
+  factory _ApiRole.fromJson(Map<String, dynamic> json) = _$ApiRoleImpl.fromJson;
 
   @override
   String get uuid;
@@ -1378,6 +1418,6 @@ abstract class _RoleModel implements RoleModel {
   String get assetPath;
   @override
   @JsonKey(ignore: true)
-  _$$RoleModelImplCopyWith<_$RoleModelImpl> get copyWith =>
+  _$$ApiRoleImplCopyWith<_$ApiRoleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

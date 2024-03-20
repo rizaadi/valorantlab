@@ -62,8 +62,8 @@ class AgentView extends StatelessWidget {
                             ),
                           );
                         },
-                        title: Text(agent.displayName),
-                        subtitle: Text(agent.description),
+                        title: Text(agent.displayName ?? ''),
+                        subtitle: Text(agent.description ?? ''),
                       );
                     },
                   ),
