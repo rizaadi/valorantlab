@@ -21,7 +21,8 @@ void main() {
   late RemoteDatasourceImpl dataSource;
 
   void setUpMockHttpClientFailure400() {
-    when(() => mockClient.get(any(), headers: any(named: 'headers'))).thenAnswer((_) async => http.Response('Something went wrong', 404));
+    when(() => mockClient.get(any(), headers: any(named: 'headers')))
+        .thenAnswer((_) async => http.Response('Something went wrong', 404));
   }
 
   setUp(() {
@@ -49,7 +50,8 @@ void main() {
           ));
     }
 
-    test('should preform a GET request on a URL with application/json header', () {
+    test('should preform a GET request on a URL with application/json header',
+        () {
       setUpMockHttpClientSuccess200();
       final url = Uri.parse('$baseUrl/agents').replace(queryParameters: {
         // to make sure don't have a "duplicate" Sova
@@ -64,14 +66,17 @@ void main() {
           ));
     });
 
-    test('should return list Agent when the response code is 200 (success)', () async {
+    test('should return list Agent when the response code is 200 (success)',
+        () async {
       setUpMockHttpClientSuccess200();
       final response = await dataSource.getAgents();
 
       expect(response, equals(modelAgent));
     });
 
-    test('should throw a ServerException when the response code is 404 or other', () {
+    test(
+        'should throw a ServerException when the response code is 404 or other',
+        () {
       setUpMockHttpClientFailure400();
       final call = dataSource.getAgents();
 
@@ -98,7 +103,8 @@ void main() {
           ));
     }
 
-    test('should preform a GET request on a URL with application/json header', () {
+    test('should preform a GET request on a URL with application/json header',
+        () {
       setUpMockHttpClientSuccess200();
 
       dataSource.getAgentById(agentId);
@@ -110,14 +116,17 @@ void main() {
           ));
     });
 
-    test('should return Agent when the response code is 200 (success)', () async {
+    test('should return Agent when the response code is 200 (success)',
+        () async {
       setUpMockHttpClientSuccess200();
       final response = await dataSource.getAgentById(agentId);
 
       expect(response, equals(modelAgent));
     });
 
-    test('should throw a ServerException when the response code is 404 or other', () {
+    test(
+        'should throw a ServerException when the response code is 404 or other',
+        () {
       setUpMockHttpClientFailure400();
       final call = dataSource.getAgentById(agentId);
 
