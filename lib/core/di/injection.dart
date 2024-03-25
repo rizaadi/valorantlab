@@ -14,7 +14,7 @@ import 'package:valorantlab/features/agent/presentation/agent/bloc/agent_bloc.da
 import 'package:valorantlab/features/agent/presentation/agent_detail/bloc/agent_detail_bloc.dart';
 
 final sl = GetIt.instance;
-Future<void> initializeDependencies() async {
+Future<void> initializeDependencies({required bool isProd}) async {
   /// bloc
   sl.registerFactory<AgentBloc>(() => AgentBloc(getAgentsUseCase: sl()));
   sl.registerFactory<AgentDetailBloc>(
@@ -24,7 +24,7 @@ Future<void> initializeDependencies() async {
   /// Database
   ///
   sl.registerLazySingleton<AppDatabase>(() => AppDatabase());
-  await sl<AppDatabase>().initialize();
+  await sl<AppDatabase>().initialize(useInspector: !isProd);
 
   ///
   /// Data sources
