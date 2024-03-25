@@ -4,7 +4,7 @@
 
 - [x] Clean Architecture
 - [x] Dependency Injection
-- [ ] Flavors
+- [x] Flavors
 - [ ] Unit Testing
 - [ ] Modularization
 - [ ] Localization (EN & ID)
