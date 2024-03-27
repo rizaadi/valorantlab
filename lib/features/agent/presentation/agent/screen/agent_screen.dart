@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:valorantlab/core/di/injection.dart';
 import 'package:valorantlab/features/agent/presentation/agent/bloc/agent_bloc.dart';
-import 'package:valorantlab/features/agent/presentation/agent_detail/screen/agent_detail_screen.dart';
 
 class AgentScreen extends StatefulWidget {
   const AgentScreen({super.key});
@@ -54,13 +54,7 @@ class AgentView extends StatelessWidget {
                       final agent = state.agents![index];
                       return ListTile(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  AgentDetailScreen(agentId: agent.uuid),
-                            ),
-                          );
+                          context.go('/agents/${agent.uuid}');
                         },
                         title: Text(agent.displayName ?? ''),
                         subtitle: Text(agent.description ?? ''),
