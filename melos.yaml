@@ -1,0 +1,19 @@
+name: valorantlab
+
+packages:
+  - lib/features/**
+  - shared/**
+  - packages/**
+  - "*"
+
+scripts:
+  analyze:
+      run: melos rub flutter analyze --fatal-infos
+      description: Run `flutter analyze` in all packages.
+      
+  test:
+      run: melos exec flutter test
+      description: Run `flutter test` in all packages.
+      packageFilters:
+        dirExists: test
+        
