@@ -7,12 +7,12 @@ part 'agent_event.dart';
 part 'agent_state.dart';
 
 class AgentBloc extends Bloc<AgentEvent, AgentState> {
-  GetAgentsUseCase getAgentsUseCase;
+  final _usecase = getIt<GetAgentsUseCase>();
 
-  AgentBloc({required this.getAgentsUseCase}) : super(AgentState.initial()) {
+  AgentBloc() : super(AgentState.initial()) {
     on<GetAgents>((event, emit) async {
       emit(AgentState.loading());
-      final agents = await getAgentsUseCase(NoParams());
+      final agents = await _usecase.call(NoParams());
 
       agents.fold((l) {
         // final message = _mapFailureToMessage(l);

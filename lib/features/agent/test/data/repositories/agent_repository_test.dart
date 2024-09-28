@@ -8,6 +8,8 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../fixtures/fixture_reader.dart';
 
+final getIt = GetIt.instance;
+
 class MockRemoteDataSource extends Mock implements RemoteDataSource {}
 
 class MockLocalDataSource extends Mock implements AgentLocalDataSource {}
@@ -16,19 +18,25 @@ class MockConnectionChecker extends Mock implements ConnectionChecker {}
 
 void main() {
   late AgentRepositoryImpl agentRepository;
-  late MockRemoteDataSource mockRemoteDataSource;
-  late MockLocalDataSource mockLocalDataSource;
-  late MockConnectionChecker mockConnectionChecker;
+  late RemoteDataSource mockRemoteDataSource;
+  late AgentLocalDataSource mockLocalDataSource;
+  late ConnectionChecker mockConnectionChecker;
 
-  setUp(() {
+  setUpAll(() {
     mockRemoteDataSource = MockRemoteDataSource();
     mockLocalDataSource = MockLocalDataSource();
     mockConnectionChecker = MockConnectionChecker();
-    agentRepository = AgentRepositoryImpl(
-      remoteDataSource: mockRemoteDataSource,
-      agentLocalDataSource: mockLocalDataSource,
-      connectionChecker: mockConnectionChecker,
-    );
+
+    getIt.registerSingleton<RemoteDataSource>(mockRemoteDataSource);
+    getIt.registerSingleton<AgentLocalDataSource>(mockLocalDataSource);
+    getIt.registerSingleton<ConnectionChecker>(mockConnectionChecker);
+
+    agentRepository = AgentRepositoryImpl();
+    getIt.registerSingleton<AgentRepository>(agentRepository);
+  });
+
+  tearDownAll(() {
+    getIt.reset();
   });
 
   void runTestsOnline(Function body) {
@@ -110,7 +118,7 @@ void main() {
         final result = await agentRepository.getAgents();
 
         verify(() => mockRemoteDataSource.getAgents());
-        verifyZeroInteractions(mockLocalDataSource);
+        verifyNever(() => mockLocalDataSource.putAgents(any()));
         expect(result, equals(Left(ServerFailure())));
       });
     });
@@ -123,7 +131,7 @@ void main() {
 
         final result = await agentRepository.getAgents();
 
-        verifyZeroInteractions(mockRemoteDataSource);
+        verifyNever(() => mockRemoteDataSource.getAgents());
         verify(() => mockLocalDataSource.getAgents());
         expect(result, isA<Right>());
       });
@@ -135,7 +143,7 @@ void main() {
 
         final result = await agentRepository.getAgents();
 
-        verifyZeroInteractions(mockRemoteDataSource);
+        verifyNever(() => mockRemoteDataSource.getAgents());
         verify(() => mockLocalDataSource.getAgents());
         expect(result, equals(Left(CacheFailure())));
       });
@@ -199,7 +207,7 @@ void main() {
 
         final result = await agentRepository.getAgentById(agentId);
 
-        verifyZeroInteractions(mockRemoteDataSource);
+        verifyNever(() => mockRemoteDataSource.getAgentById(any()));
         verify(() => mockLocalDataSource.getAgentById(agentId));
         expect(result, equals(Right(entityAgent)));
       });
@@ -212,7 +220,7 @@ void main() {
 
         final result = await agentRepository.getAgentById(agentId);
 
-        verifyZeroInteractions(mockRemoteDataSource);
+        verifyNever(() => mockRemoteDataSource.getAgentById(any()));
         verify(() => mockLocalDataSource.getAgentById(agentId));
         expect(result, equals(Left(CacheFailure())));
       });

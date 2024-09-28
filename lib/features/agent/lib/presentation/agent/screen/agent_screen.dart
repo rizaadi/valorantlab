@@ -1,5 +1,4 @@
 import 'package:agent/presentation/agent/bloc/agent_bloc.dart';
-import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +12,8 @@ class AgentScreen extends StatefulWidget {
 class _AgentScreenState extends State<AgentScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<AgentBloc>()..add(const GetAgents()),
+    return BlocProvider<AgentBloc>(
+      create: (context) => AgentBloc()..add(const GetAgents()),
       child: const AgentView(),
     );
   }

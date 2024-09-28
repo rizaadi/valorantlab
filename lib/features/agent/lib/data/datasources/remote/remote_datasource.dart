@@ -3,16 +3,16 @@ import 'dart:io';
 
 import 'package:agent/data/models/api_agent.dart';
 import 'package:core/core.dart';
-import 'package:dependencies/dependencies.dart' as http;
+import 'package:dependencies/dependencies.dart';
 
 abstract class RemoteDataSource {
   Future<List<ApiAgent>> getAgents();
   Future<ApiAgent> getAgentById(String agentId);
 }
 
+@LazySingleton(as: RemoteDataSource)
 class RemoteDatasourceImpl implements RemoteDataSource {
-  RemoteDatasourceImpl(this.client);
-  final http.Client client;
+  final client = getIt<Client>();
 
   @override
   Future<List<ApiAgent>> getAgents() async {

@@ -22,11 +22,15 @@ void main() {
         .thenAnswer((_) async => http.Response('Something went wrong', 404));
   }
 
-  setUp(() {
+  setUpAll(() {
     mockClient = MockClient();
-    dataSource = RemoteDatasourceImpl(mockClient);
-
+    getIt.registerLazySingleton<http.Client>(() => mockClient);
+    dataSource = RemoteDatasourceImpl();
     registerFallbackValue(UriFake());
+  });
+
+  tearDownAll(() {
+    getIt.unregister<http.Client>();
   });
 
   group('getAgents', () {

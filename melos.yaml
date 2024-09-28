@@ -8,12 +8,19 @@ packages:
 
 scripts:
   analyze:
-      run: melos rub flutter analyze --fatal-infos
+      run: melos exec flutter analyze --fatal-infos
       description: Run `flutter analyze` in all packages.
       
-  test:
+  test:select:
       run: melos exec flutter test
-      description: Run `flutter test` in all packages.
+      description: Run `flutter test --select` in all packages.
       packageFilters:
         dirExists: test
+  test:
+      run: melos run test:select --no-select
+      description: Run `flutter test` in all packages.
+      
+  format:
+      run: melos exec dart format . --output=none --set-exit-if-changed
+      description: Run `dart format` in all packages.
         

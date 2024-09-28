@@ -10,15 +10,13 @@ abstract class AgentLocalDataSource {
   Future<void> deleteAgents();
 }
 
+@LazySingleton(as: AgentLocalDataSource)
 class AgentLocalDataSourceImpl implements AgentLocalDataSource {
-  AgentLocalDataSourceImpl({required this.appDatabase});
-
-  final AppDatabase appDatabase;
-
+  final _appDatabase = getIt<AppDatabase>();
   @override
   Future<void> putAgents(List<LocalAgent> agents) async {
     try {
-      final db = appDatabase.db;
+      final db = _appDatabase.db;
       await db.writeTxn(() => db.localAgents.putAll(agents));
     } catch (e) {
       throw CacheFailure();
@@ -28,7 +26,7 @@ class AgentLocalDataSourceImpl implements AgentLocalDataSource {
   @override
   Future<List<LocalAgent>> getAgents() {
     try {
-      final db = appDatabase.db;
+      final db = _appDatabase.db;
       return db.localAgents.where().findAll();
     } catch (e) {
       throw CacheFailure();
@@ -38,7 +36,7 @@ class AgentLocalDataSourceImpl implements AgentLocalDataSource {
   @override
   Future<LocalAgent> getAgentById(String agentId) async {
     try {
-      final db = appDatabase.db;
+      final db = _appDatabase.db;
       final getAgent = await db.localAgents.get(fastHash(agentId));
       if (getAgent != null) {
         return getAgent;
@@ -53,7 +51,7 @@ class AgentLocalDataSourceImpl implements AgentLocalDataSource {
   @override
   Future<void> deleteAgents() async {
     try {
-      final db = appDatabase.db;
+      final db = _appDatabase.db;
       await db.localAgents.clear();
     } catch (e) {
       throw CacheFailure();

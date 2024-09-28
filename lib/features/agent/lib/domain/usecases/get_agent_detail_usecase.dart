@@ -3,6 +3,7 @@ import 'package:agent/domain/repositories/agent_repository.dart';
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 
+@lazySingleton
 class GetAgentDetailUseCase extends UseCase<Agent, String> {
   GetAgentDetailUseCase(this.repository);
 

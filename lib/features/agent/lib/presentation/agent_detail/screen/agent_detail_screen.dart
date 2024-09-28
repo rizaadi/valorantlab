@@ -15,7 +15,7 @@ class _AgentDetailScreenState extends State<AgentDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AgentDetailBloc(getAgentDetailUseCase: sl())
+      create: (context) => AgentDetailBloc(getAgentDetailUseCase: getIt())
         ..add(GetAgentDetail(widget.agentId)),
       child: const AgentDetailView(),
     );

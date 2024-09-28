@@ -4,6 +4,7 @@ abstract interface class ConnectionChecker {
   Future<bool> get isConnected;
 }
 
+@LazySingleton(as: ConnectionChecker)
 class ConnectionCheckerImpl implements ConnectionChecker {
   final Connectivity connectivity;
 

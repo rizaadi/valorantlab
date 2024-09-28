@@ -7,16 +7,11 @@ import 'package:agent/domain/repositories/agent_repository.dart';
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 
+@LazySingleton(as: AgentRepository)
 class AgentRepositoryImpl implements AgentRepository {
-  final RemoteDataSource remoteDataSource;
-  final AgentLocalDataSource agentLocalDataSource;
-  final ConnectionChecker connectionChecker;
-
-  AgentRepositoryImpl({
-    required this.remoteDataSource,
-    required this.agentLocalDataSource,
-    required this.connectionChecker,
-  });
+  final remoteDataSource = getIt<RemoteDataSource>();
+  final agentLocalDataSource = getIt<AgentLocalDataSource>();
+  final connectionChecker = getIt<ConnectionChecker>();
 
   @override
   Future<Either<Failure, List<Agent>>> getAgents() async {

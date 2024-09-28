@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-dart analyze . --fatal-infos
-dart format . --output=none --set-exit-if-changed
+melos run analyze
+melos run format

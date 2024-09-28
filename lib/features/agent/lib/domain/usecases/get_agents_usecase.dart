@@ -3,6 +3,7 @@ import 'package:agent/domain/repositories/agent_repository.dart';
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 
+@lazySingleton
 class GetAgentsUseCase extends UseCase<List<Agent>, NoParams> {
   GetAgentsUseCase(this.repository);
 
