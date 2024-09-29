@@ -7,7 +7,7 @@ packages:
       path: "lib/features/agent"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   ansi:
     dependency: transitive
     description:
@@ -142,7 +142,7 @@ packages:
       path: "packages/core"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   dartz:
     dependency: transitive
     description:
@@ -165,7 +165,7 @@ packages:
       path: "shared/dependencies"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   equatable:
     dependency: transitive
     description:
@@ -254,7 +254,7 @@ packages:
       path: "lib/features/home"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   http:
     dependency: transitive
     description:

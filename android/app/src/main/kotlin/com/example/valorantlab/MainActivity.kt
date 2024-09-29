@@ -1,4 +1,4 @@
-package com.example.valorantlab
+package com.valorantlab.app
 
 import io.flutter.embedding.android.FlutterActivity
 
