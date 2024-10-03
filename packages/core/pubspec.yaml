@@ -12,10 +12,10 @@ dependencies:
     sdk: flutter
 
   agent:
-    path: ../../lib/features/agent
+    path: ../../features/agent
     
   home:
-    path: ../../lib/features/home
+    path: ../../features/home
 
   dependencies:
     path: ../../shared/dependencies

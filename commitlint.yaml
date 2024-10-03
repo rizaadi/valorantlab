@@ -15,3 +15,10 @@ rules:
       - revert
       - style
       - test
+  scope-enum:
+    - 2
+    - always
+    - - home
+      - agent
+      - core
+      - dependencies

@@ -12,7 +12,10 @@ dependencies:
     sdk: flutter
 
   agent:
-    path: lib/features/agent
+    path: features/agent
+    
+  home:
+    path: features/home
     
   # Shared
   dependencies:
@@ -22,7 +25,7 @@ dependencies:
     path: packages/core
 
 dev_dependencies:
-  melos: ^5.2.2
+  melos: ^6.1.0
   commitlint_cli: ^0.7.1
 flutter:
   uses-material-design: true

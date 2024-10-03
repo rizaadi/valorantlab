@@ -1,9 +1,10 @@
 import 'package:core/core.dart';
-import 'package:flutter/material.dart';
+import 'package:valorantlab/app.dart';
+import 'package:valorantlab/bootstrap.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await configureDependencies(isProd: false);
-  runApp(const MyApp());
+  bootstrap(() async {
+    await configureDependencies(isProd: false);
+    return const MyApp();
+  });
 }

@@ -1,10 +1,9 @@
 name: valorantlab
 
 packages:
-  - lib/features/**
-  - shared/**
-  - packages/**
-  - "*"
+  - features/*
+  - shared/*
+  - packages/*
 
 scripts:
   analyze:
