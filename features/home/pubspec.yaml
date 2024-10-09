@@ -1,6 +1,6 @@
 name: home
 description: "A new Flutter package project."
-version: 0.0.2+3
+version: 0.0.3
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
