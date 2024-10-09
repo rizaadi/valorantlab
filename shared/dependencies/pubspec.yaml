@@ -23,6 +23,7 @@ dependencies:
   isar_flutter_libs: ^3.1.0+1
   json_annotation: ^4.8.1
   path_provider: ^2.1.2
+  google_fonts: ^6.2.0
 
 dev_dependencies:
   commitlint_cli: ^0.7.1

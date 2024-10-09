@@ -1,4 +1,6 @@
 import 'package:agent/presentation/agent/bloc/agent_bloc.dart';
+import 'package:agent/presentation/agent/widgets/card_agent_widget.dart';
+import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
@@ -27,37 +29,267 @@ class AgentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: VlColors.vlBackground,
       appBar: AppBar(
-        title: const Text('Valorant Lab'),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          color: VlColors.vlWhite,
+          style: IconButton.styleFrom(
+            backgroundColor: VlColors.vlBackground2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13),
+            ),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
       ),
-      body: BlocBuilder<AgentBloc, AgentState>(
-        builder: (context, state) {
-          if (state.status == AgentStatus.loading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state.status == AgentStatus.loaded) {
-            return ListView.builder(
-              itemCount: state.agents!.length,
-              itemBuilder: (context, index) {
-                final agent = state.agents![index];
-                return ListTile(
-                  onTap: () {
-                    context.go('/agents/${agent.uuid}');
-                  },
-                  title: Text(agent.displayName ?? ''),
-                  subtitle: Text(agent.description ?? ''),
-                );
+      body: Padding(
+        padding: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
+        child: ListView(
+          children: [
+            Text(
+              "AGENT",
+              style: GoogleFonts.roboto(
+                fontSize: 48,
+                fontWeight: FontWeight.bold,
+                color: VlColors.vlWhite,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Assets.images.sentinelIcon.image(
+                  width: 20,
+                  height: 20,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  "Controller",
+                  style: GoogleFonts.roboto(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: VlColors.vlWhite,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            BlocBuilder<AgentBloc, AgentState>(
+              builder: (context, state) {
+                if (state.status == AgentStatus.loading) {
+                  return const SizedBox(
+                    height: 85,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                } else if (state.status == AgentStatus.loaded) {
+                  final agentController = state.agents!.where((e) => e.role?.displayName == "Controller").toList();
+                  return SizedBox(
+                    width: double.infinity,
+                    height: 85,
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemCount: agentController.length,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      itemBuilder: (context, index) {
+                        final agent = agentController[index];
+
+                        return CardAgentWidget(
+                          imageUrl: agent.displayIconSmall!,
+                          onTap: () {
+                            context.go('/agents/${agent.uuid}');
+                          },
+                        );
+                      },
+                    ),
+                  );
+                } else if (state.status == AgentStatus.error) {
+                  return const Center(child: Text('Error'));
+                } else {
+                  return const SizedBox();
+                }
               },
-            );
-          } else if (state.status == AgentStatus.error) {
-            return const Center(
-              child: Text('Error'),
-            );
-          } else {
-            return const SizedBox();
-          }
-        },
+            ),
+            const SizedBox(height: 14),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Assets.images.duelistIcon.image(
+                  width: 20,
+                  height: 20,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  "Duelist",
+                  style: GoogleFonts.roboto(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: VlColors.vlWhite,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            BlocBuilder<AgentBloc, AgentState>(
+              builder: (context, state) {
+                if (state.status == AgentStatus.loading) {
+                  return const SizedBox(
+                    height: 85,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                } else if (state.status == AgentStatus.loaded) {
+                  final agentController = state.agents!.where((e) => e.role?.displayName == "Duelist").toList();
+                  return SizedBox(
+                    height: 85,
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemCount: agentController.length,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      itemBuilder: (context, index) {
+                        final agent = agentController[index];
+
+                        return CardAgentWidget(
+                          imageUrl: agent.displayIconSmall!,
+                          onTap: () {
+                            context.go('/agents/${agent.uuid}');
+                          },
+                        );
+                      },
+                    ),
+                  );
+                } else if (state.status == AgentStatus.error) {
+                  return const Center(child: Text('Error'));
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+            const SizedBox(height: 14),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Assets.images.initiatorIcon.image(
+                  width: 20,
+                  height: 20,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  "Initiator",
+                  style: GoogleFonts.roboto(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: VlColors.vlWhite,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            BlocBuilder<AgentBloc, AgentState>(
+              builder: (context, state) {
+                if (state.status == AgentStatus.loading) {
+                  return const SizedBox(
+                    height: 85,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                } else if (state.status == AgentStatus.loaded) {
+                  final agentController = state.agents!.where((e) => e.role?.displayName == "Initiator").toList();
+                  return SizedBox(
+                    height: 85,
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemCount: agentController.length,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      itemBuilder: (context, index) {
+                        final agent = agentController[index];
+
+                        return CardAgentWidget(
+                          imageUrl: agent.displayIconSmall!,
+                          onTap: () {
+                            context.go('/agents/${agent.uuid}');
+                          },
+                        );
+                      },
+                    ),
+                  );
+                } else if (state.status == AgentStatus.error) {
+                  return const Center(child: Text('Error'));
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+            const SizedBox(height: 14),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Assets.images.sentinelIcon.image(
+                  width: 20,
+                  height: 20,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  "Sentinel",
+                  style: GoogleFonts.roboto(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: VlColors.vlWhite,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            BlocBuilder<AgentBloc, AgentState>(
+              builder: (context, state) {
+                if (state.status == AgentStatus.loading) {
+                  return const SizedBox(
+                    height: 85,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                } else if (state.status == AgentStatus.loaded) {
+                  final agentController = state.agents!.where((e) => e.role?.displayName == "Sentinel").toList();
+                  return SizedBox(
+                    height: 85,
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemCount: agentController.length,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      itemBuilder: (context, index) {
+                        final agent = agentController[index];
+
+                        return CardAgentWidget(
+                          imageUrl: agent.displayIconSmall!,
+                          onTap: () {
+                            context.go('/agents/${agent.uuid}');
+                          },
+                        );
+                      },
+                    ),
+                  );
+                } else if (state.status == AgentStatus.error) {
+                  return const Center(child: Text('Error'));
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

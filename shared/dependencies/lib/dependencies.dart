@@ -15,3 +15,4 @@ export 'package:isar/isar.dart';
 export 'package:isar_flutter_libs/isar_flutter_libs.dart';
 export 'package:json_annotation/json_annotation.dart';
 export 'package:path_provider/path_provider.dart';
+export 'package:google_fonts/google_fonts.dart';

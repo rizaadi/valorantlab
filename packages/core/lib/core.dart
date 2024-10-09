@@ -7,3 +7,5 @@ export 'network/connection_checker.dart';
 export 'routes/routes.dart';
 export 'usecases/usecase.dart';
 export 'utils/utils.dart';
+export 'styles/styles.dart';
+export 'gen/assets.gen.dart';
