@@ -89,7 +89,9 @@ class AgentView extends StatelessWidget {
                     ),
                   );
                 } else if (state.status == AgentStatus.loaded) {
-                  final agentController = state.agents!.where((e) => e.role?.displayName == "Controller").toList();
+                  final agentController = state.agents!
+                      .where((e) => e.role?.displayName == "Controller")
+                      .toList();
                   return SizedBox(
                     width: double.infinity,
                     height: 85,
@@ -97,7 +99,8 @@ class AgentView extends StatelessWidget {
                       padding: EdgeInsets.zero,
                       itemCount: agentController.length,
                       scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 14),
                       itemBuilder: (context, index) {
                         final agent = agentController[index];
 
@@ -147,14 +150,17 @@ class AgentView extends StatelessWidget {
                     ),
                   );
                 } else if (state.status == AgentStatus.loaded) {
-                  final agentController = state.agents!.where((e) => e.role?.displayName == "Duelist").toList();
+                  final agentController = state.agents!
+                      .where((e) => e.role?.displayName == "Duelist")
+                      .toList();
                   return SizedBox(
                     height: 85,
                     child: ListView.separated(
                       padding: EdgeInsets.zero,
                       itemCount: agentController.length,
                       scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 14),
                       itemBuilder: (context, index) {
                         final agent = agentController[index];
 
@@ -204,14 +210,17 @@ class AgentView extends StatelessWidget {
                     ),
                   );
                 } else if (state.status == AgentStatus.loaded) {
-                  final agentController = state.agents!.where((e) => e.role?.displayName == "Initiator").toList();
+                  final agentController = state.agents!
+                      .where((e) => e.role?.displayName == "Initiator")
+                      .toList();
                   return SizedBox(
                     height: 85,
                     child: ListView.separated(
                       padding: EdgeInsets.zero,
                       itemCount: agentController.length,
                       scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 14),
                       itemBuilder: (context, index) {
                         final agent = agentController[index];
 
@@ -261,14 +270,17 @@ class AgentView extends StatelessWidget {
                     ),
                   );
                 } else if (state.status == AgentStatus.loaded) {
-                  final agentController = state.agents!.where((e) => e.role?.displayName == "Sentinel").toList();
+                  final agentController = state.agents!
+                      .where((e) => e.role?.displayName == "Sentinel")
+                      .toList();
                   return SizedBox(
                     height: 85,
                     child: ListView.separated(
                       padding: EdgeInsets.zero,
                       itemCount: agentController.length,
                       scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) => const SizedBox(width: 14),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 14),
                       itemBuilder: (context, index) {
                         final agent = agentController[index];
 

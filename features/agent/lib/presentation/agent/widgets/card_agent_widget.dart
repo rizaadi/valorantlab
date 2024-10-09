@@ -19,7 +19,8 @@ class ParallelogramPainter extends CustomPainter {
 
     // Memotong gambar dengan path jajar genjang
     canvas.save(); // Menyimpan state canvas sebelum clip
-    canvas.clipPath(parallelogramPath); // Memotong canvas sesuai dengan path jajar genjang
+    canvas.clipPath(
+        parallelogramPath); // Memotong canvas sesuai dengan path jajar genjang
 
     // Jika gambar sudah ada, gambarkan di dalam jajar genjang
     if (image != null) {
