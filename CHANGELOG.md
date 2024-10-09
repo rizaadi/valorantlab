@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`agent` - `v0.0.2+2`](#agent---v0022)
+ - [`core` - `v0.0.2+2`](#core---v0022)
+ - [`home` - `v0.0.2+3`](#home---v0023)
+
+---
+
+#### `agent` - `v0.0.2+2`
+
+ - **REFACTOR**: refactor folder features.
+
+#### `core` - `v0.0.2+2`
+
+ - **REFACTOR**: refactor folder features.
+
+#### `home` - `v0.0.2+3`
+
+ - **REFACTOR**: refactor folder features.
+
+
+## 2024-10-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`agent` - `v0.0.2+1`](#agent---v0021)
+ - [`core` - `v0.0.2+1`](#core---v0021)
+ - [`home` - `v0.0.2+2`](#home---v0022)
+
+---
+
+#### `agent` - `v0.0.2+1`
+
+ - **REFACTOR**: refactor folder features.
+
+#### `core` - `v0.0.2+1`
+
+ - **REFACTOR**: refactor folder features.
+
+#### `home` - `v0.0.2+2`
+
+ - **REFACTOR**: refactor folder features.
+
+
+## 2024-10-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`home` - `v0.0.2+1`](#home---v0021)
+
+---
+
+#### `home` - `v0.0.2+1`
+
+ - **REFACTOR**: refactor folder features.
+
+
 ## 2024-09-28
 
 ### Changes

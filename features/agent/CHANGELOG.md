@@ -1,3 +1,11 @@
+## 0.0.2+2
+
+ - **REFACTOR**: refactor folder features.
+
+## 0.0.2+1
+
+ - **REFACTOR**: refactor folder features.
+
 ## 0.0.2
 
  - **REFACTOR**: move models folder.

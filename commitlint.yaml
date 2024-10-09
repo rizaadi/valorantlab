@@ -18,7 +18,8 @@ rules:
   scope-enum:
     - 2
     - always
-    - - home
+    - - release
+      - home
       - agent
       - core
       - dependencies
