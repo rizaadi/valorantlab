@@ -1,3 +1,5 @@
+import 'package:core/core.dart';
+import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,11 +7,41 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
+    return Scaffold(
+      backgroundColor: VlColors.vlBackground,
+      appBar: AppBar(
+        title: const Text(
+          "vAlorantlab",
+          style: TextStyle(
+            fontFamily: FontFamily.valorant,
+            color: VlColors.vlRed,
+          ),
+        ),
+        backgroundColor: VlColors.vlBackground,
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(14),
         children: [
-          Text("Home Screen 2"),
-          Text("Home Screen 2"),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: VlColors.vlBackground2,
+              minimumSize: const Size(double.infinity, 130),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onPressed: () {
+              context.go('/agents');
+            },
+            child: const Text(
+              "Agent",
+              style: TextStyle(
+                fontSize: 48,
+                fontFamily: FontFamily.valorant,
+                color: VlColors.vlWhite,
+              ),
+            ),
+          )
         ],
       ),
     );

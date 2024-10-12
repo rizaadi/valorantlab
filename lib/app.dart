@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -9,11 +10,31 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Valorant Lab',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-        useMaterial3: true,
-      ),
       routerConfig: routes,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: VlColors.vlRed),
+        useMaterial3: true,
+        splashColor: Colors.transparent,
+        splashFactory: NoSplash.splashFactory,
+        hoverColor: Colors.transparent,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: VlColors.vlBackground2,
+          unselectedLabelStyle: GoogleFonts.roboto(
+            color: VlColors.vlWhite,
+            fontWeight: FontWeight.w400,
+          ),
+          selectedLabelStyle: GoogleFonts.roboto(
+            color: VlColors.vlRed,
+            fontWeight: FontWeight.w500,
+          ),
+          unselectedIconTheme: IconThemeData(
+            color: VlColors.vlWhite,
+          ),
+          selectedIconTheme: IconThemeData(
+            color: VlColors.vlRed,
+          ),
+        ),
+      ),
     );
   }
 }

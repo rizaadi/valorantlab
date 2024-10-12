@@ -52,35 +52,46 @@ final routes = GoRouter(
   ],
 );
 
-class ScafoldWithNavBar extends StatelessWidget {
+class ScafoldWithNavBar extends StatefulWidget {
   const ScafoldWithNavBar({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
   @override
+  State<ScafoldWithNavBar> createState() => _ScafoldWithNavBarState();
+}
+
+class _ScafoldWithNavBarState extends State<ScafoldWithNavBar> {
+  int _currentPageIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: _onTap,
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.support_agent_rounded),
-            label: 'Agent',
-          ),
-        ],
-      ),
-    );
+        body: widget.navigationShell,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentPageIndex,
+          onTap: _onTap,
+          useLegacyColorScheme: false,
+          items: const [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: 'Agent',
+              icon: Icon(Icons.support_agent_rounded),
+            )
+          ],
+        ));
   }
 
   _onTap(int index) {
-    navigationShell.goBranch(
-      index,
-      initialLocation: index == navigationShell.currentIndex,
-    );
+    setState(() {
+      _currentPageIndex = index;
+      widget.navigationShell.goBranch(
+        index,
+        initialLocation: index == widget.navigationShell.currentIndex,
+      );
+    });
   }
 }

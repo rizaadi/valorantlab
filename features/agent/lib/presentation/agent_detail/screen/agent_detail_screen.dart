@@ -16,7 +16,8 @@ class _AgentDetailScreenState extends State<AgentDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AgentDetailBloc()..add(GetAgentDetail(widget.agentId)),
+      create: (context) =>
+          AgentDetailBloc()..add(GetAgentDetail(widget.agentId)),
       child: const AgentDetailView(),
     );
   }
@@ -50,7 +51,9 @@ class AgentDetailView extends StatelessWidget {
       ),
       body: BlocBuilder<AgentDetailBloc, AgentDetailState>(
         builder: (context, state) => switch (state.status) {
-          AgentDetailStatus.loading || AgentDetailStatus.initial => const Center(child: CircularProgressIndicator()),
+          AgentDetailStatus.loading ||
+          AgentDetailStatus.initial =>
+            const Center(child: CircularProgressIndicator()),
           AgentDetailStatus.error => const Center(child: Text('Error')),
           AgentDetailStatus.loaded => Padding(
               padding: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
@@ -155,14 +158,17 @@ class AgentDetailView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Table(
-              border: TableBorder.symmetric(inside: const BorderSide(color: VlColors.vlBackground, width: 3)),
+              border: TableBorder.symmetric(
+                  inside:
+                      const BorderSide(color: VlColors.vlBackground, width: 3)),
               defaultVerticalAlignment: TableCellVerticalAlignment.middle,
               columnWidths: const {1: FlexColumnWidth(2.7)},
               children: [
                 TableRow(
                   children: <Widget>[
                     Container(
-                      decoration: const BoxDecoration(color: VlColors.vlBackground2),
+                      decoration:
+                          const BoxDecoration(color: VlColors.vlBackground2),
                       padding: const EdgeInsets.all(10),
                       child: Text(
                         "Agent",
@@ -181,7 +187,8 @@ class AgentDetailView extends StatelessWidget {
                 TableRow(
                   children: <Widget>[
                     Container(
-                      decoration: const BoxDecoration(color: VlColors.vlBackground2),
+                      decoration:
+                          const BoxDecoration(color: VlColors.vlBackground2),
                       padding: const EdgeInsets.all(10),
                       child: Text(
                         "Ability Type",

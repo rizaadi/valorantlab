@@ -32,9 +32,18 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/svg/
+  fonts:
+    - family: Valorant
+      fonts:
+        - asset: assets/fonts/Valorant.ttf
 
 flutter_gen:
+  integrations:
+    flutter_svg: true
   assets:
     outputs:
       package_parameter_enabled: true
- 
+  fonts:
+    outputs:
+      package_parameter_enabled: true

@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: agent,core,dependencies
+dependency_overrides:
+  agent:
+    path: ../agent
+  core:
+    path: ../../packages/core
+  dependencies:
+    path: ../../shared/dependencies
