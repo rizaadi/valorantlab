@@ -32,17 +32,6 @@ class AgentView extends StatelessWidget {
       extendBodyBehindAppBar: true,
       backgroundColor: VlColors.vlBackground,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          color: VlColors.vlWhite,
-          style: IconButton.styleFrom(
-            backgroundColor: VlColors.vlBackground2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(13),
-            ),
-          ),
-        ),
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         elevation: 0,

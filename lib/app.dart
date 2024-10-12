@@ -17,6 +17,10 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.transparent,
         splashFactory: NoSplash.splashFactory,
         hoverColor: Colors.transparent,
+        bottomSheetTheme: BottomSheetThemeData(
+          elevation: 0,
+          backgroundColor: VlColors.vlBackground,
+        ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: VlColors.vlBackground2,
           unselectedLabelStyle: GoogleFonts.roboto(

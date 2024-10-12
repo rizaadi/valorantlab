@@ -1,5 +1,6 @@
 import 'package:agent/domain/entities/agent_entity.dart';
 import 'package:agent/presentation/agent_detail/bloc/agent_detail_bloc.dart';
+import 'package:agent/presentation/agent_detail/widgets/draggable_sheet_widget.dart';
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
@@ -61,9 +62,9 @@ class AgentDetailView extends StatelessWidget {
                 children: [
                   Text(
                     state.agent!.displayName ?? '-',
-                    style: GoogleFonts.roboto(
+                    style: const TextStyle(
                       fontSize: 48,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: FontFamily.valorant,
                       color: VlColors.vlWhite,
                     ),
                   ),
@@ -121,92 +122,44 @@ class AgentDetailView extends StatelessWidget {
   Future<void> _showSkill(BuildContext context, Ability e) {
     return showModalBottomSheet(
       context: context,
-      showDragHandle: true,
-      backgroundColor: VlColors.vlBackground,
-      elevation: 0,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
-      ),
+      isScrollControlled: true,
       useSafeArea: true,
-      builder: (context) => Padding(
-        padding: const EdgeInsets.fromLTRB(14, 0, 14, 50),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.network(
-              e.displayIcon ?? '',
-              height: 70,
-              width: 70,
-            ),
-            const SizedBox(height: 20),
-            Text(
-              e.displayName ?? '-',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: VlColors.vlWhite,
+      builder: (context) => DraggableSheetWidget(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(14, 0, 14, 50),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.network(
+                e.displayIcon ?? '',
+                height: 70,
+                width: 70,
               ),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              e.description ?? '-',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.roboto(color: VlColors.vlWhite),
-            ),
-            const SizedBox(height: 20),
-            Table(
-              border: TableBorder.symmetric(
-                  inside:
-                      const BorderSide(color: VlColors.vlBackground, width: 3)),
-              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-              columnWidths: const {1: FlexColumnWidth(2.7)},
-              children: [
-                TableRow(
-                  children: <Widget>[
-                    Container(
-                      decoration:
-                          const BoxDecoration(color: VlColors.vlBackground2),
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        "Agent",
-                        style: GoogleFonts.roboto(color: VlColors.vlWhite),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        e.displayName ?? '-',
-                        style: GoogleFonts.roboto(color: VlColors.vlWhite),
-                      ),
-                    )
-                  ],
+              const SizedBox(height: 20),
+              Text(
+                e.displayName ?? '-',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: VlColors.vlWhite,
                 ),
-                TableRow(
-                  children: <Widget>[
-                    Container(
-                      decoration:
-                          const BoxDecoration(color: VlColors.vlBackground2),
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        "Ability Type",
-                        style: GoogleFonts.roboto(color: VlColors.vlWhite),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        e.slot ?? '-',
-                        style: GoogleFonts.roboto(color: VlColors.vlWhite),
-                      ),
-                    )
-                  ],
+              ),
+              Text(
+                e.slot ?? '-',
+                style: GoogleFonts.roboto(
+                  color: VlColors.vlWhite,
+                  fontWeight: FontWeight.w500,
                 ),
-              ],
-            )
-          ],
+              ),
+              const SizedBox(height: 5),
+              Text(
+                e.description ?? '-',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(color: VlColors.vlWhite),
+              ),
+            ],
+          ),
         ),
       ),
     );
