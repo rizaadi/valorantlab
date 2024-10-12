@@ -51,11 +51,11 @@ class AgentView extends StatelessWidget {
         padding: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
         child: ListView(
           children: [
-            Text(
+            const Text(
               "AGENT",
-              style: GoogleFonts.roboto(
+              style: TextStyle(
                 fontSize: 48,
-                fontWeight: FontWeight.bold,
+                fontFamily: FontFamily.valorant,
                 color: VlColors.vlWhite,
               ),
             ),
