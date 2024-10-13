@@ -27,5 +27,17 @@ dependencies:
 dev_dependencies:
   melos: ^6.1.0
   commitlint_cli: ^0.7.1
+  flutter_launcher_icons: ^0.14.1
+
 flutter:
   uses-material-design: true
+
+# Flutter Launcher Icons configuration
+flutter_launcher_icons:
+  ios: true
+  android: true
+  image_path_ios: "launcher/ios-app-icon.png"
+  image_path_android: "launcher/android-app-icon.png"
+  adaptive_icon_background: "launcher/android-app-icon-background.png"
+  adaptive_icon_foreground: "launcher/android-app-icon-foreground.png"
+  remove_alpha_ios: true
