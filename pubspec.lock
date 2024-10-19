@@ -7,7 +7,7 @@ packages:
       path: "features/agent"
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.0.3+1"
   ansi:
     dependency: transitive
     description:
@@ -166,7 +166,7 @@ packages:
       path: "packages/core"
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.0.4"
   crypto:
     dependency: transitive
     description:
@@ -318,7 +318,7 @@ packages:
       path: "features/home"
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.0.3+1"
   http:
     dependency: transitive
     description:
