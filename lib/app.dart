@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
+import 'package:valorantlab/flavors.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Valorant Lab',
+      title: F.title,
       routerConfig: routes,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: VlColors.vlRed),

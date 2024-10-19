@@ -28,6 +28,7 @@ dev_dependencies:
   melos: ^6.1.0
   commitlint_cli: ^0.7.1
   flutter_launcher_icons: ^0.14.1
+  flutter_flavorizr: 2.2.3
 
 flutter:
   uses-material-design: true
@@ -41,3 +42,36 @@ flutter_launcher_icons:
   adaptive_icon_background: "launcher/android-app-icon-background.png"
   adaptive_icon_foreground: "launcher/android-app-icon-foreground.png"
   remove_alpha_ios: true
+
+flavorizr:
+  ide: "vscode"
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    
+  flavors:
+    dev:
+      app:
+        name: "Valorantlab Dev"
+      android:
+        applicationId: "com.valorantlab.app.dev"
+        icon: "launcher/android-app-icon-dev.png"
+        adaptiveIcon:
+          foreground: "launcher/android-app-icon-foreground-dev.png"
+          background: "launcher/android-app-icon-background.png"
+      ios:
+        bundleId: "com.valorantlab.app.dev"
+        icon: "launcher/ios-app-icon-dev.png"
+    
+    prod:
+      app:
+        name: "Valorantlab"
+      android:
+        applicationId: "com.valorantlab.app"  
+        icon: "launcher/android-app-icon.png"
+        adaptiveIcon:
+          foreground: "launcher/android-app-icon-foreground.png"
+          background: "launcher/android-app-icon-background.png"
+      ios:
+        bundleId: "com.valorantlab.app"
+        icon: "launcher/ios-app-icon.png"
