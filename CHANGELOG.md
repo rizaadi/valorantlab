@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-10-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`core` - `v0.0.4`](#core---v004)
+ - [`valorantlab` - `v1.2.0`](#valorantlab---v120)
+ - [`home` - `v0.0.3+1`](#home---v0031)
+ - [`agent` - `v0.0.3+1`](#agent---v0031)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `home` - `v0.0.3+1`
+ - `agent` - `v0.0.3+1`
+
+---
+
+#### `core` - `v0.0.4`
+
+ - **FEAT**: change target sdk to 34.
+
+#### `valorantlab` - `v1.2.0`
+
+ - **FEAT**: change target sdk to 34.
+ - **FEAT**: flavoring app.
+ - **FEAT**: change app icon.
+
+## 1.2.0
+
+ - **FEAT**: change target sdk to 34.
+ - **FEAT**: flavoring app.
+ - **FEAT**: change app icon.
+
+
 ## 2024-10-10
 
 ### Changes

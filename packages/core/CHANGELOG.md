@@ -1,3 +1,7 @@
+## 0.0.4
+
+ - **FEAT**: change target sdk to 34.
+
 ## 0.0.3
 
  - **REFACTOR**: refactor folder features.
