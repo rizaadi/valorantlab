@@ -73,7 +73,7 @@ The first version of this app originated from my college exam, as described [Her
 - [x] Flavors
 - [x] Unit Testing
 - [x] Modularization
-- [ ] Localization (EN & ID)
+- [x] Localization (EN & ID)
 - [ ] CI/CD with fastlane
 - [ ] Publish to Playstore/Appstore
 
