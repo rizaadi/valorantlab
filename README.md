@@ -14,9 +14,9 @@ Valorant information app
 
 ![Product Screenshota](thumnail.png)
 
-This is my exploration of the Flutter project to build an app that shows information about the Valorant Game, such as the Agents, Maps, Weapons, etc.
+This project is my exploration with Flutter to build an app that displays information about the game Valorant, including detail on Agents, Maps, Weapons, and more.
 
-The first version of this app came from my college exam [Here](https://example.com).
+The first version of this app originated from my college exam, as described [Here](https://www.rizaadikurniawan.com/project/valorantlab), and I later refactored it.
 
 ### Built With
 
@@ -73,9 +73,9 @@ The first version of this app came from my college exam [Here](https://example.c
 - [x] Flavors
 - [x] Unit Testing
 - [x] Modularization
-- [ ] Publish to Playstore/Appstore
-- [ ] CI/CD with fastlane
 - [ ] Localization (EN & ID)
+- [ ] CI/CD with fastlane
+- [ ] Publish to Playstore/Appstore
 
 ## License
 
@@ -83,4 +83,4 @@ Distributed under the MIT License. See [MIT License](https://github.com/rizaadi/
 
 ## Contact
 
-Riza Adi Kurniawan - rizaadi890@gmail.com
+[Riza Adi Kurniawan](https://www.linkedin.com/in/rizaadikurniawan/) - rizaadi890@gmail.com
