@@ -19,6 +19,8 @@ dependencies:
 
   dependencies:
     path: ../../shared/dependencies
+  i18n:
+    path: ../../shared/i18n
 
 dev_dependencies:
   build_runner: ^2.4.8

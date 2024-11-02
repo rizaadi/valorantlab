@@ -17,3 +17,4 @@ export 'package:json_annotation/json_annotation.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:flutter_svg/svg.dart';
+// export 'package:intl/intl.dart';

@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: core,dependencies,home
+# melos_managed_dependency_overrides: core,dependencies,home,i18n
 dependency_overrides:
   core:
     path: ../../packages/core
@@ -6,3 +6,5 @@ dependency_overrides:
     path: ../../shared/dependencies
   home:
     path: ../home
+  i18n:
+    path: ../../shared/i18n

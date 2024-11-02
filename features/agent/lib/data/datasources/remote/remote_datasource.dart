@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:agent/data/models/api_agent.dart';
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
+import 'package:i18n/i18n.dart';
 
 abstract class RemoteDataSource {
   Future<List<ApiAgent>> getAgents();
@@ -13,12 +14,14 @@ abstract class RemoteDataSource {
 @LazySingleton(as: RemoteDataSource)
 class RemoteDatasourceImpl implements RemoteDataSource {
   final client = getIt<Client>();
+  final localization = LocaleSettings.currentLocale.languageCode;
 
   @override
   Future<List<ApiAgent>> getAgents() async {
     final url = Uri.parse('$baseUrl/agents').replace(queryParameters: {
       // to make sure don't have a "duplicate" Sova
       'isPlayableCharacter': 'true',
+      if (localization == "id") 'language': 'id-ID'
     });
     final response = await client.get(
       url,
@@ -37,7 +40,9 @@ class RemoteDatasourceImpl implements RemoteDataSource {
 
   @override
   Future<ApiAgent> getAgentById(String agentId) async {
-    final url = Uri.parse('$baseUrl/agents/$agentId');
+    final url = Uri.parse('$baseUrl/agents/$agentId').replace(
+      queryParameters: {if (localization == "id") 'language': 'id-ID'},
+    );
     final response = await client.get(
       url,
       headers: {

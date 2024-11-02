@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
+import 'package:i18n/i18n.dart';
 import 'package:valorantlab/flavors.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: F.title,
       routerConfig: routes,
+      locale: TranslationProvider.of(context).flutterLocale,
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: VlColors.vlRed),
         useMaterial3: true,

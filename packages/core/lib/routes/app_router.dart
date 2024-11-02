@@ -2,6 +2,7 @@ import 'package:agent/agent.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home.dart';
+import 'package:i18n/i18n.dart';
 
 final _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'RootNavigator');
@@ -72,12 +73,12 @@ class _ScafoldWithNavBarState extends State<ScafoldWithNavBar> {
           currentIndex: _currentPageIndex,
           onTap: _onTap,
           useLegacyColorScheme: false,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(Icons.home),
+              label: context.t.home,
+              icon: const Icon(Icons.home),
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               label: 'Agent',
               icon: Icon(Icons.support_agent_rounded),
             )

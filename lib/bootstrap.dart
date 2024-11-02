@@ -3,6 +3,8 @@ import 'dart:developer';
 
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
+import 'package:i18n/gen/strings.g.dart';
+import 'package:i18n/i18n.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -22,6 +24,11 @@ class AppBlocObserver extends BlocObserver {
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
   Bloc.observer = const AppBlocObserver();
-  runApp(await builder());
+  runApp(
+    TranslationProvider(
+      child: await builder(),
+    ),
+  );
 }
