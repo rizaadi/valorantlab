@@ -5,14 +5,40 @@ packages:
   - features/*
   - shared/*
   - packages/*
-
+command:
+  clean:
+    hooks:
+      post: |
+        melos exec --flutter -c 1 -- "flutter clean"
+        melos run build:clean
 scripts:
   analyze:
       run: melos exec flutter analyze --fatal-infos
       description: Run `flutter analyze` in all packages.
       
+  build:clean:
+    run: melos run build:clean:select --no-select
+    description: "Run build runner clean in all packages that depend on it."
+
+  build:clean:select:
+    run: melos exec -- "dart run build_runner clean"
+    description: "Run build runner clean in selected package that depends on build_runner."
+    packageFilters:
+      dependsOn:
+        - "build_runner"
+
+  get:select:
+    run: melos exec -c 1 -- "flutter pub get"
+    description: "Run `flutter pub get` in selected package."
+    packageFilters:
+      dependsOn: flutter
+  get:
+    run: melos run get:select --no-select
+    description: "Run `flutter pub get` in all packages that depends on Flutter."
+
+
   test:select:
-      run: melos exec flutter test
+      run: melos exec -c 1  -- "flutter test"
       description: Run `flutter test --select` in all packages.
       packageFilters:
         dirExists: test
