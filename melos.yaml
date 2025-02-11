@@ -13,7 +13,7 @@ command:
         melos run build:clean
 scripts:
   analyze:
-      run: melos exec flutter analyze --fatal-infos
+      run: melos exec -c 1 flutter analyze --fatal-infos
       description: Run `flutter analyze` in all packages.
       
   build:clean:
