@@ -1,8 +1,8 @@
 name: valorantlab
-description: A new Flutter project.
+description: App that displays information about the game Valorant, including detail on Agents, Maps, Weapons, and more.
 publish_to: "none"
 
-version: 1.2.0+2
+version: 1.2.0+3
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
