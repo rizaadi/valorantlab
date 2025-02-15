@@ -50,3 +50,6 @@ scripts:
       run: melos exec dart format . --output=none --set-exit-if-changed
       description: Run `dart format` in all packages.
         
+  generate:
+      run: melos exec -c 1 --depends-on="build_runner" -- \
+        "dart run build_runner build --delete-conflicting-outputs"

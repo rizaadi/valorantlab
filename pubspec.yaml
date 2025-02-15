@@ -16,6 +16,9 @@ dependencies:
     
   home:
     path: features/home
+
+  weapon:
+    path: features/weapon
     
   # Shared
   dependencies:
