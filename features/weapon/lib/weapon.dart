@@ -1,7 +1,5 @@
 library weapon;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'di/injector.module.dart';
+export 'data/data.dart';
+export 'domain/domain.dart';
