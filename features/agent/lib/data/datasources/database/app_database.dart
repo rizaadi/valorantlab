@@ -1,6 +1,7 @@
 import 'package:agent/data/models/local_agent.dart';
 import 'package:dependencies/dependencies.dart';
 
+// TODO: move to core package
 @lazySingleton
 class AppDatabase {
   late final Isar _isar;
