@@ -24,15 +24,16 @@ void main() {
     mockRemoteDataSource = MockRemoteDataSource();
     mockLocalDataSource = MockWeaponLocalDataSource();
     mockConnectionChecker = MockConnectionChecker();
-    
+
     // Register fallback values
     registerFallbackValue(<LocalWeapon>[]);
     registerFallbackValue(LocalWeapon(uuid: 'test-uuid'));
-    
+
     getIt.registerLazySingleton<RemoteDataSource>(() => mockRemoteDataSource);
-    getIt.registerLazySingleton<WeaponLocalDataSource>(() => mockLocalDataSource);
+    getIt.registerLazySingleton<WeaponLocalDataSource>(
+        () => mockLocalDataSource);
     getIt.registerLazySingleton<ConnectionChecker>(() => mockConnectionChecker);
-    
+
     repository = WeaponRepositoryImpl();
   });
 
@@ -51,67 +52,90 @@ void main() {
   group('getWeapons', () {
     final jsonWeapons = fixture('weapon/weapons.json');
     final List<dynamic> decodedWeapons = jsonDecode(jsonWeapons)['data'];
-    final apiWeapons = decodedWeapons.map((e) => ApiWeapon.fromJson(e)).toList();
+    final apiWeapons =
+        decodedWeapons.map((e) => ApiWeapon.fromJson(e)).toList();
     final localWeapons = apiWeapons.map((e) => e.toLocal()).toList();
 
     test('should check if the device is online', () {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => true);
-      when(() => mockRemoteDataSource.getWeapons()).thenAnswer((_) async => apiWeapons);
-      when(() => mockLocalDataSource.putWeapons(any())).thenAnswer((_) async {});
-      
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => true);
+      when(() => mockRemoteDataSource.getWeapons())
+          .thenAnswer((_) async => apiWeapons);
+      when(() => mockLocalDataSource.putWeapons(any()))
+          .thenAnswer((_) async {});
+
       repository.getWeapons();
-      
+
       verify(() => mockConnectionChecker.isConnected);
     });
 
-    test('should return remote data when the call to remote data source is successful', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => true);
-      when(() => mockRemoteDataSource.getWeapons()).thenAnswer((_) async => apiWeapons);
-      when(() => mockLocalDataSource.putWeapons(any())).thenAnswer((_) async {});
-      
+    test(
+        'should return remote data when the call to remote data source is successful',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => true);
+      when(() => mockRemoteDataSource.getWeapons())
+          .thenAnswer((_) async => apiWeapons);
+      when(() => mockLocalDataSource.putWeapons(any()))
+          .thenAnswer((_) async {});
+
       final result = await repository.getWeapons();
-      
+
       verify(() => mockRemoteDataSource.getWeapons());
       expect(result, isA<Right<Failure, List<Weapon>>>());
     });
 
-    test('should cache the data locally when the call to remote data source is successful', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => true);
-      when(() => mockRemoteDataSource.getWeapons()).thenAnswer((_) async => apiWeapons);
-      when(() => mockLocalDataSource.putWeapons(any())).thenAnswer((_) async {});
-      
+    test(
+        'should cache the data locally when the call to remote data source is successful',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => true);
+      when(() => mockRemoteDataSource.getWeapons())
+          .thenAnswer((_) async => apiWeapons);
+      when(() => mockLocalDataSource.putWeapons(any()))
+          .thenAnswer((_) async {});
+
       await repository.getWeapons();
-      
+
       verify(() => mockLocalDataSource.putWeapons(any()));
     });
 
-    test('should return server failure when the call to remote data source is unsuccessful', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => true);
+    test(
+        'should return server failure when the call to remote data source is unsuccessful',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => true);
       when(() => mockRemoteDataSource.getWeapons()).thenThrow(ServerFailure());
-      
+
       final result = await repository.getWeapons();
-      
+
       verify(() => mockRemoteDataSource.getWeapons());
       expect(result, isA<Left<Failure, List<Weapon>>>());
     });
 
-    test('should return last local data when the cached data is present', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => false);
-      when(() => mockLocalDataSource.getWeapons()).thenAnswer((_) async => localWeapons);
-      
+    test('should return last local data when the cached data is present',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => false);
+      when(() => mockLocalDataSource.getWeapons())
+          .thenAnswer((_) async => localWeapons);
+
       final result = await repository.getWeapons();
-      
+
       verifyZeroInteractions(mockRemoteDataSource);
       verify(() => mockLocalDataSource.getWeapons());
       expect(result, isA<Right<Failure, List<Weapon>>>());
     });
 
-    test('should return cache failure when the call to local data source is unsuccessful', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => false);
+    test(
+        'should return cache failure when the call to local data source is unsuccessful',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => false);
       when(() => mockLocalDataSource.getWeapons()).thenThrow(CacheFailure());
-      
+
       final result = await repository.getWeapons();
-      
+
       verifyZeroInteractions(mockRemoteDataSource);
       verify(() => mockLocalDataSource.getWeapons());
       expect(result, isA<Left<Failure, List<Weapon>>>());
@@ -126,53 +150,70 @@ void main() {
     final localWeapon = apiWeapon.toLocal();
 
     test('should check if the device is online', () {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => true);
-      when(() => mockRemoteDataSource.getWeaponById(any())).thenAnswer((_) async => apiWeapon);
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => true);
+      when(() => mockRemoteDataSource.getWeaponById(any()))
+          .thenAnswer((_) async => apiWeapon);
       when(() => mockLocalDataSource.putWeapon(any())).thenAnswer((_) async {});
-      
+
       repository.getWeaponById(weaponId);
-      
+
       verify(() => mockConnectionChecker.isConnected);
     });
 
-    test('should return remote data when the call to remote data source is successful', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => true);
-      when(() => mockRemoteDataSource.getWeaponById(any())).thenAnswer((_) async => apiWeapon);
+    test(
+        'should return remote data when the call to remote data source is successful',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => true);
+      when(() => mockRemoteDataSource.getWeaponById(any()))
+          .thenAnswer((_) async => apiWeapon);
       when(() => mockLocalDataSource.putWeapon(any())).thenAnswer((_) async {});
-      
+
       final result = await repository.getWeaponById(weaponId);
-      
+
       verify(() => mockRemoteDataSource.getWeaponById(weaponId));
       expect(result, isA<Right<Failure, Weapon>>());
     });
 
-    test('should return server failure when the call to remote data source is unsuccessful', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => true);
-      when(() => mockRemoteDataSource.getWeaponById(any())).thenThrow(ServerFailure());
-      
+    test(
+        'should return server failure when the call to remote data source is unsuccessful',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => true);
+      when(() => mockRemoteDataSource.getWeaponById(any()))
+          .thenThrow(ServerFailure());
+
       final result = await repository.getWeaponById(weaponId);
-      
+
       verify(() => mockRemoteDataSource.getWeaponById(weaponId));
       expect(result, isA<Left<Failure, Weapon>>());
     });
 
-    test('should return last local data when the cached data is present', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => false);
-      when(() => mockLocalDataSource.getWeaponById(any())).thenAnswer((_) async => localWeapon);
-      
+    test('should return last local data when the cached data is present',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => false);
+      when(() => mockLocalDataSource.getWeaponById(any()))
+          .thenAnswer((_) async => localWeapon);
+
       final result = await repository.getWeaponById(weaponId);
-      
+
       verifyZeroInteractions(mockRemoteDataSource);
       verify(() => mockLocalDataSource.getWeaponById(weaponId));
       expect(result, isA<Right<Failure, Weapon>>());
     });
 
-    test('should return cache failure when the call to local data source is unsuccessful', () async {
-      when(() => mockConnectionChecker.isConnected).thenAnswer((_) async => false);
-      when(() => mockLocalDataSource.getWeaponById(any())).thenThrow(CacheFailure());
-      
+    test(
+        'should return cache failure when the call to local data source is unsuccessful',
+        () async {
+      when(() => mockConnectionChecker.isConnected)
+          .thenAnswer((_) async => false);
+      when(() => mockLocalDataSource.getWeaponById(any()))
+          .thenThrow(CacheFailure());
+
       final result = await repository.getWeaponById(weaponId);
-      
+
       verifyZeroInteractions(mockRemoteDataSource);
       verify(() => mockLocalDataSource.getWeaponById(weaponId));
       expect(result, isA<Left<Failure, Weapon>>());

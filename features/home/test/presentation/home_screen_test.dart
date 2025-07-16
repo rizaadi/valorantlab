@@ -37,7 +37,8 @@ void main() {
     expect(find.byType(Scaffold), findsOneWidget);
     expect(find.byType(AppBar), findsOneWidget);
     expect(find.byType(ListView), findsOneWidget);
-    expect(find.byType(SizedBox), findsOneWidget); // One SizedBox for spacing between buttons
+    expect(find.byType(SizedBox),
+        findsOneWidget); // One SizedBox for spacing between buttons
   });
 
   testWidgets('HomeScreen buttons should have correct styling',
