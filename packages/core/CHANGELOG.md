@@ -1,3 +1,9 @@
+## 0.0.5
+
+ - **FEAT**(weapon): implement weapon repository and add presentation layer.
+ - **FEAT**(weapon): add weapon feature with data models, remote datasource, and dependency injection.
+ - **FEAT**: add localization (en & id).
+
 ## 0.0.4
 
  - **FEAT**: change target sdk to 34.

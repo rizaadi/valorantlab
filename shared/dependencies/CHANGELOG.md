@@ -1,3 +1,7 @@
+## 0.0.3
+
+ - **FEAT**: add localization (en & id).
+
 ## 0.0.2
 
  - **FEAT**: modularization injectable.
