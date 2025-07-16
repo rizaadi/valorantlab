@@ -110,7 +110,7 @@ void main() {
 
       dataSource.getAgentById(agentId);
       verify(() => mockClient.get(
-            Uri.parse('$baseUrl/agents/$agentId'),
+            Uri.parse('$baseUrl/agents/$agentId').replace(queryParameters: {}),
             headers: {
               HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
             },

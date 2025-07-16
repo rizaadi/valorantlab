@@ -15,7 +15,7 @@ packages:
       path: "features/agent"
       relative: true
     source: path
-    version: "0.0.3+1"
+    version: "0.0.4"
   analyzer:
     dependency: transitive
     description:
@@ -198,7 +198,7 @@ packages:
       path: "packages/core"
       relative: true
     source: path
-    version: "0.0.4"
+    version: "0.0.5"
   crypto:
     dependency: transitive
     description:
@@ -237,7 +237,7 @@ packages:
       path: "shared/dependencies"
       relative: true
     source: path
-    version: "0.0.2"
+    version: "0.0.3"
   equatable:
     dependency: transitive
     description:
@@ -363,7 +363,7 @@ packages:
       path: "features/home"
       relative: true
     source: path
-    version: "0.0.3+1"
+    version: "0.0.4"
   http:
     dependency: transitive
     description:
@@ -386,7 +386,7 @@ packages:
       path: "shared/i18n"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   image:
     dependency: transitive
     description:
@@ -838,7 +838,7 @@ packages:
       path: "features/weapon"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   web:
     dependency: transitive
     description:
