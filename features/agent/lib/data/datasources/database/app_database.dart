@@ -1,4 +1,5 @@
 import 'package:agent/data/models/local_agent.dart';
+import 'package:weapon/data/models/local_weapon.dart';
 import 'package:dependencies/dependencies.dart';
 
 // TODO: move to core package
@@ -18,7 +19,7 @@ class AppDatabase {
 
     final dir = await getApplicationDocumentsDirectory();
     _isar = await Isar.open(
-      [LocalAgentSchema],
+      [LocalAgentSchema, LocalWeaponSchema],
       directory: dir.path,
       inspector: useInspector,
     );

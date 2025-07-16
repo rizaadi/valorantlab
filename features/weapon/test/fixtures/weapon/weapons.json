@@ -1,0 +1,55 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "uuid": "9c82e19d-4575-0200-1a81-3eacf00cf872",
+      "displayName": "Vandal",
+      "category": "Rifle",
+      "defaultSkinUuid": "a7a1b0ab-4b48-cbcb-02a8-e2a03bde0b6c",
+      "displayIcon": "https://media.valorant-api.com/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872/displayicon.png",
+      "killStreamIcon": "https://media.valorant-api.com/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872/killstreamicon.png",
+      "assetPath": "ShooterGame/Content/Equippables/Guns/Rifle/AK",
+      "weaponStats": {
+        "fireRate": 9.25,
+        "magazineSize": 25,
+        "runSpeedMultiplier": 0.9175,
+        "equipTimeSeconds": 1.0,
+        "reloadTimeSeconds": 2.5,
+        "firstBulletAccuracy": 0.25,
+        "shotgunPelletCount": 1,
+        "wallPenetration": "Medium",
+        "feature": null,
+        "fireMode": null,
+        "altFireType": null,
+        "adsStats": null,
+        "altShotgunStats": null,
+        "airBurstStats": null,
+        "damageRanges": [
+          {
+            "rangeStartMeters": 0,
+            "rangeEndMeters": 50,
+            "headDamage": 160.0,
+            "bodyDamage": 40,
+            "legDamage": 34.0
+          }
+        ]
+      },
+      "shopData": {
+        "cost": 2900,
+        "category": "Rifles",
+        "shopOrderPriority": 2,
+        "categoryText": "Rifles",
+        "gridPosition": {
+          "row": 1,
+          "column": 1
+        },
+        "canBeTrashed": true,
+        "image": null,
+        "newImage": "https://media.valorant-api.com/weapons/9c82e19d-4575-0200-1a81-3eacf00cf872/shop/newimage.png",
+        "newImage2": null,
+        "assetPath": "ShooterGame/Content/UI/GameInfo/Assets/Weapons/Rifle_AK_NewImage"
+      },
+      "skins": []
+    }
+  ]
+}

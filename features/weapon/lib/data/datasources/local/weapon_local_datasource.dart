@@ -5,6 +5,7 @@ import 'package:weapon/data/models/local_weapon.dart';
 
 abstract class WeaponLocalDataSource {
   Future<void> putWeapons(List<LocalWeapon> weapons);
+  Future<void> putWeapon(LocalWeapon weapon);
   Future<List<LocalWeapon>> getWeapons();
   Future<LocalWeapon> getWeaponById(String weaponId);
   Future<void> deleteWeapons();
@@ -24,6 +25,16 @@ class WeaponLocalDataSourceImpl implements WeaponLocalDataSource {
   }
 
   @override
+  Future<void> putWeapon(LocalWeapon weapon) async {
+    try {
+      final db = _appDatabase.db;
+      await db.writeTxn(() => db.localWeapons.put(weapon));
+    } catch (e) {
+      throw CacheFailure();
+    }
+  }
+
+  @override
   Future<List<LocalWeapon>> getWeapons() {
     try {
       final db = _appDatabase.db;
@@ -37,9 +48,9 @@ class WeaponLocalDataSourceImpl implements WeaponLocalDataSource {
   Future<LocalWeapon> getWeaponById(String weaponId) async {
     try {
       final db = _appDatabase.db;
-      final getAgent = await db.localWeapons.get(fastHash(weaponId));
-      if (getAgent != null) {
-        return getAgent;
+      final getWeapon = await db.localWeapons.get(fastHash(weaponId));
+      if (getWeapon != null) {
+        return getWeapon;
       } else {
         throw CacheFailure();
       }

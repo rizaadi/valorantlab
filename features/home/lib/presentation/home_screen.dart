@@ -41,6 +41,27 @@ class HomeScreen extends StatelessWidget {
                 color: VlColors.vlWhite,
               ),
             ),
+          ),
+          const SizedBox(height: 15),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: VlColors.vlBackground2,
+              minimumSize: const Size(double.infinity, 130),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onPressed: () {
+              context.go('/weapons');
+            },
+            child: const Text(
+              "Weapons",
+              style: TextStyle(
+                fontSize: 48,
+                fontFamily: FontFamily.valorant,
+                color: VlColors.vlWhite,
+              ),
+            ),
           )
         ],
       ),

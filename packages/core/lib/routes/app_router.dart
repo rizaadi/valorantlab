@@ -3,6 +3,7 @@ import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home.dart';
 import 'package:i18n/i18n.dart';
+import 'package:weapon/weapon.dart';
 
 final _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'RootNavigator');
@@ -41,6 +42,26 @@ final routes = GoRouter(
                     final agentId = state.pathParameters['id']!;
                     return NoTransitionPage(
                       child: AgentDetailScreen(agentId: agentId),
+                    );
+                  },
+                )
+              ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/weapons',
+              builder: (context, state) => const WeaponScreen(),
+              routes: [
+                GoRoute(
+                  path: ':id',
+                  parentNavigatorKey: _rootNavigatorKey,
+                  pageBuilder: (context, state) {
+                    final weaponId = state.pathParameters['id']!;
+                    return NoTransitionPage(
+                      child: WeaponDetailScreen(weaponId: weaponId),
                     );
                   },
                 )

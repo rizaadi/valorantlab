@@ -10,7 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+    
+  weapon: 
+    path: ../weapon
   core:
     path: ../../packages/core
 

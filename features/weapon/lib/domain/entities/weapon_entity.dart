@@ -2,15 +2,15 @@ import 'package:dependencies/dependencies.dart';
 
 class Weapon extends Equatable {
   final String uuid;
-  final String displayName;
-  final String category;
-  final String defaultSkinUuid;
-  final String displayIcon;
-  final String killStreamIcon;
-  final String assetPath;
-  final WeaponStats weaponStats;
-  final ShopData shopData;
-  final List<Skin> skins;
+  final String? displayName;
+  final String? category;
+  final String? defaultSkinUuid;
+  final String? displayIcon;
+  final String? killStreamIcon;
+  final String? assetPath;
+  final WeaponStats? weaponStats;
+  final ShopData? shopData;
+  final List<Skin>? skins;
 
   const Weapon({
     required this.uuid,
@@ -45,7 +45,7 @@ class ShopData extends Equatable {
   final String category;
   final int shopOrderPriority;
   final String categoryText;
-  final GridPosition gridPosition;
+  final GridPosition? gridPosition;
   final bool canBeTrashed;
   final dynamic image;
   final String newImage;
@@ -97,9 +97,9 @@ class Skin extends Equatable {
   final String uuid;
   final String displayName;
   final String themeUuid;
-  final String contentTierUuid;
-  final String displayIcon;
-  final String wallpaper;
+  final String? contentTierUuid;
+  final String? displayIcon;
+  final String? wallpaper;
   final String assetPath;
   final List<Chroma> chromas;
   final List<Level> levels;
@@ -133,10 +133,10 @@ class Skin extends Equatable {
 class Chroma extends Equatable {
   final String uuid;
   final String displayName;
-  final String displayIcon;
+  final String? displayIcon;
   final String fullRender;
-  final String swatch;
-  final String streamedVideo;
+  final String? swatch;
+  final String? streamedVideo;
   final String assetPath;
 
   const Chroma({
@@ -164,9 +164,9 @@ class Chroma extends Equatable {
 class Level extends Equatable {
   final String uuid;
   final String displayName;
-  final String levelItem;
-  final String displayIcon;
-  final String streamedVideo;
+  final String? levelItem;
+  final String? displayIcon;
+  final String? streamedVideo;
   final String assetPath;
 
   const Level({
@@ -198,12 +198,12 @@ class WeaponStats extends Equatable {
   final double firstBulletAccuracy;
   final int shotgunPelletCount;
   final String wallPenetration;
-  final String feature;
-  final String fireMode;
-  final String altFireType;
-  final AdsStats adsStats;
-  final AltShotgunStats altShotgunStats;
-  final AirBurstStats airBurstStats;
+  final String? feature;
+  final String? fireMode;
+  final String? altFireType;
+  final AdsStats? adsStats;
+  final AltShotgunStats? altShotgunStats;
+  final AirBurstStats? airBurstStats;
   final List<DamageRange> damageRanges;
 
   const WeaponStats({
