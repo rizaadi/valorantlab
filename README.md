@@ -14,7 +14,7 @@ Valorant information app
 
 ![Product Screenshota](thumnail.png)
 
-This project is my exploration with Flutter to build an app that displays information about the game Valorant, including detail on Agents, Maps, Weapons, and more.
+This project is my exploration with Flutter to build an app that displays information about the game Valorant, including detail on Agents, Maps, Weapons, and more. The app fetches real-time data from the **[Valorant API](https://valorant-api.com/)** to provide up-to-date game information.
 
 The first version of this app originated from my college exam, as described [Here](https://www.rizaadikurniawan.com/project/valorantlab), and I later refactored it.
 
