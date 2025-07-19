@@ -5,51 +5,357 @@ packages:
   - features/*
   - shared/*
   - packages/*
+
 command:
   clean:
     hooks:
       post: |
         melos exec --flutter -c 1 -- "flutter clean"
         melos run build:clean
+
 scripts:
-  analyze:
-      run: melos exec -c 1 flutter analyze --fatal-infos
-      description: Run `flutter analyze` in all packages.
-      
+  # ==========================================
+  # 📦 BUILD & DEVELOPMENT SCRIPTS
+  # ==========================================
+  
+  # Enhanced build scripts
+  build:
+    run: flutter build apk --release --flavor prod
+    description: "Build production APK"
+    
+  build:dev:
+    run: flutter build apk --debug --flavor dev
+    description: "Build development APK"
+    
+  build:watch:
+    run: flutter run --flavor dev
+    description: "Run app in development mode with hot reload"
+    
+  build:apk:
+    run: flutter build apk --release --flavor prod
+    description: "Build production APK for Android"
+    
+  build:apk:dev:
+    run: flutter build apk --debug --flavor dev
+    description: "Build development APK for Android"
+    
+  build:ios:
+    run: flutter build ios --release --flavor prod
+    description: "Build production iOS app"
+    
+  build:ios:dev:
+    run: flutter build ios --debug --flavor dev
+    description: "Build development iOS app"
+    
+  build:appbundle:
+    run: flutter build appbundle --release --flavor prod
+    description: "Build production App Bundle for Play Store"
+    
+  build:appbundle:dev:
+    run: flutter build appbundle --debug --flavor dev
+    description: "Build development App Bundle"
+    
+  build:appbundle:profile:
+    run: flutter build appbundle --profile --flavor dev
+    description: "Build profile App Bundle for performance testing"
+    
   build:clean:
     run: melos run build:clean:select --no-select
-    description: "Run build runner clean in all packages that depend on it."
+    description: "Run build runner clean in all packages that depend on it"
 
   build:clean:select:
     run: melos exec -- "dart run build_runner clean"
-    description: "Run build runner clean in selected package that depends on build_runner."
+    description: "Run build runner clean in selected package that depends on build_runner"
     packageFilters:
       dependsOn:
         - "build_runner"
 
-  get:select:
-    run: melos exec -c 1 -- "flutter pub get"
-    description: "Run `flutter pub get` in selected package."
-    packageFilters:
-      dependsOn: flutter
+  # ==========================================
+  # 📋 DEPENDENCY MANAGEMENT
+  # ==========================================
+  
   get:
     run: melos run get:select --no-select
-    description: "Run `flutter pub get` in all packages that depends on Flutter."
+    description: "Run `flutter pub get` in all packages that depends on Flutter"
 
+  get:select:
+    run: melos exec -c 1 -- "flutter pub get"
+    description: "Run `flutter pub get` in selected package"
+    packageFilters:
+      dependsOn: flutter
+      
+  deps:upgrade:
+    run: melos exec -c 1 -- "flutter pub upgrade"
+    description: "Upgrade dependencies in all packages"
+    packageFilters:
+      dependsOn: flutter
+      
+  deps:outdated:
+    run: melos exec -c 1 -- "flutter pub outdated"
+    description: "Check for outdated dependencies in all packages"
+    packageFilters:
+      dependsOn: flutter
 
-  test:select:
-      run: melos exec -c 1  -- "flutter test"
-      description: Run `flutter test --select` in all packages.
-      packageFilters:
-        dirExists: test
+  # ==========================================
+  # 🔨 CODE GENERATION
+  # ==========================================
+  
+  generate:
+    run: melos exec -c 1 --depends-on="build_runner" -- "dart run build_runner build --delete-conflicting-outputs"
+    description: "Run code generation in all packages"
+    
+  generate:watch:
+    run: melos exec -c 1 --depends-on="build_runner" -- "dart run build_runner watch --delete-conflicting-outputs"
+    description: "Run code generation in watch mode"
+
+  # ==========================================
+  # 🧪 TESTING & QUALITY ASSURANCE
+  # ==========================================
+  
   test:
-      run: melos run test:select --no-select
-      description: Run `flutter test` in all packages.
+    run: melos run test:select --no-select
+    description: "Run `flutter test` in all packages"
+      
+  test:select:
+    run: melos exec -c 1 -- "flutter test"
+    description: "Run `flutter test --select` in all packages"
+    packageFilters:
+      dirExists: test
+      
+  test:unit:
+    run: melos exec -c 1 -- "flutter test --coverage"
+    description: "Run unit tests with coverage"
+    packageFilters:
+      dirExists: test
+      
+  test:coverage:
+    run: |
+      melos exec -c 1 -- "flutter test --coverage"
+      melos exec -c 1 -- "lcov --summary coverage/lcov.info"
+    description: "Run tests with coverage reports"
+    packageFilters:
+      dirExists: test
+      
+  test:coverage:html:
+    run: |
+      melos exec -c 1 -- "flutter test --coverage"
+      melos exec -c 1 -- "genhtml coverage/lcov.info -o coverage/html"
+      echo "📊 HTML coverage reports generated in coverage/html/ directories"
+    description: "Run tests and generate HTML coverage reports"
+    packageFilters:
+      dirExists: test
+      
+  test:watch:
+    run: melos exec -c 1 -- "flutter test --watch"
+    description: "Run tests in watch mode"
+    packageFilters:
+      dirExists: test
+      
+  test:integration:
+    run: flutter test integration_test/
+    description: "Run integration tests"
+    
+  # ==========================================
+  # 🔍 ANALYSIS & LINTING
+  # ==========================================
+  
+  analyze:
+    run: melos exec -c 1 -- "flutter analyze --fatal-infos"
+    description: "Run `flutter analyze` in all packages"
+    
+  lint:
+    run: melos exec -c 1 -- "dart analyze --fatal-infos"
+    description: "Run stricter analysis with fatal info messages"
+    
+  lint:fix:
+    run: melos exec -c 1 -- "dart fix --apply"
+    description: "Auto-fix linting issues where possible"
       
   format:
-      run: melos exec dart format . --output=none --set-exit-if-changed
-      description: Run `dart format` in all packages.
-        
-  generate:
-      run: melos exec -c 1 --depends-on="build_runner" -- \
-        "dart run build_runner build --delete-conflicting-outputs"
+    run: melos exec -c 1 -- "dart format . --output=none --set-exit-if-changed"
+    description: "Run `dart format` in all packages"
+    
+  format:check:
+    run: melos exec -c 1 -- "dart format . --output=none --set-exit-if-changed"
+    description: "Check formatting without making changes"
+    
+  format:fix:
+    run: melos exec -c 1 -- "dart format ."
+    description: "Format all Dart files"
+
+  # ==========================================
+  # 📦 VERSION MANAGEMENT & RELEASE
+  # ==========================================
+  
+  version:
+    run: melos version --no-git-tag-version
+    description: "Version packages and update changelog"
+    
+  version:patch:
+    run: melos version --patch --no-git-tag-version
+    description: "Bump patch version for all packages"
+    
+  version:minor:
+    run: melos version --minor --no-git-tag-version
+    description: "Bump minor version for all packages"
+    
+  version:major:
+    run: melos version --major --no-git-tag-version
+    description: "Bump major version for all packages"
+    
+  version:prerelease:
+    run: melos version --prerelease --no-git-tag-version
+    description: "Bump prerelease version for all packages"
+    
+  changelog:generate:
+    run: melos version --no-git-tag-version --changelog
+    description: "Generate changelog for all packages"
+    
+  release:
+    run: |
+      melos version --no-git-tag-version
+      melos run build
+      echo "📦 Release preparation completed!"
+    description: "Prepare release: version, changelog, and build"
+
+  # ==========================================
+  # 🚀 CI/CD INTEGRATION
+  # ==========================================
+  
+  ci:setup:
+    run: |
+      melos clean
+      melos bootstrap
+      melos run get
+    description: "Setup CI environment"
+    
+  ci:test:
+    run: |
+      melos run analyze
+      melos run format:check
+      melos run test:coverage
+    description: "Run CI tests with coverage"
+    
+  ci:build:
+    run: |
+      melos run generate
+      melos run build
+    description: "Build for CI deployment"
+    
+  ci:deploy:
+    run: |
+      melos run ci:test
+      melos run ci:build
+      echo "🚀 Ready for deployment!"
+    description: "Complete CI/CD pipeline"
+    
+  verify:
+    run: |
+      melos run format:check
+      melos run analyze
+      melos run test
+    description: "Verify code quality (pre-commit checks)"
+
+  # ==========================================
+  # 🛠️ DEVELOPMENT EXPERIENCE
+  # ==========================================
+  
+  dev:setup:
+    run: |
+      melos clean
+      melos bootstrap
+      melos run get
+      melos run generate
+      echo "🛠️ Development environment setup completed!"
+    description: "Setup development environment"
+    
+  dev:reset:
+    run: |
+      melos clean
+      melos run build:clean
+      melos bootstrap
+      melos run get
+      melos run generate
+      echo "🔄 Development environment reset completed!"
+    description: "Reset and rebuild development environment"
+    
+  dev:doctor:
+    run: |
+      echo "🔍 Running Flutter Doctor..."
+      flutter doctor
+      echo "📋 Checking Melos packages..."
+      melos list
+      echo "🔍 Checking dependencies..."
+      melos run deps:outdated
+    description: "Check development environment health"
+    
+  clean:deep:
+    run: |
+      melos clean
+      melos run build:clean
+      melos exec -c 1 -- "flutter clean"
+      find . -name "*.g.dart" -delete
+      find . -name "*.freezed.dart" -delete
+      echo "🧹 Deep clean completed!"
+    description: "Deep clean all build artifacts and generated files"
+    
+  bootstrap:
+    run: |
+      melos bootstrap
+      melos run get
+      echo "🚀 Bootstrap completed!"
+    description: "Bootstrap all packages"
+
+  # ==========================================
+  # 🎯 SCOPED COMMANDS (Package Filters)
+  # ==========================================
+  
+  # Features-only commands
+  features:test:
+    run: melos exec -c 1 -- "flutter test"
+    description: "Run tests only in feature packages"
+    packageFilters:
+      scope: 
+        - "agent"
+        - "home"
+        - "weapon"
+      dirExists: test
+      
+  features:build:
+    run: melos exec -c 1 --depends-on="build_runner" -- "dart run build_runner build --delete-conflicting-outputs"
+    description: "Run code generation only in feature packages"
+    packageFilters:
+      scope:
+        - "agent"
+        - "weapon"
+      dependsOn: "build_runner"
+      
+  # Core packages only
+  core:test:
+    run: melos exec -c 1 -- "flutter test"
+    description: "Run tests only in core packages"
+    packageFilters:
+      scope:
+        - "core"
+      dirExists: test
+      
+  # Shared packages only
+  shared:test:
+    run: melos exec -c 1 -- "flutter test"
+    description: "Run tests only in shared packages"
+    packageFilters:
+      scope:
+        - "dependencies"
+        - "i18n"
+      dirExists: test
+
+  # ==========================================
+  # ⚡ PERFORMANCE & OPTIMIZATION
+  # ==========================================
+  
+  perf:profile:
+    run: |
+      flutter build apk --profile --flavor dev
+      echo "📊 Profile build completed for performance analysis"
+    description: "Build profile version for performance profiling"
+    
