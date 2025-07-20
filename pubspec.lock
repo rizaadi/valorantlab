@@ -467,6 +467,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  maps:
+    dependency: "direct overridden"
+    description:
+      path: "features/maps"
+      relative: true
+    source: path
+    version: "0.0.1"
   matcher:
     dependency: transitive
     description:

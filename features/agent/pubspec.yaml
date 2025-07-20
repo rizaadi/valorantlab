@@ -13,6 +13,8 @@ dependencies:
     
   weapon: 
     path: ../weapon
+  maps:
+    path: ../maps
   core:
     path: ../../packages/core
 

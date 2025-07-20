@@ -14,7 +14,7 @@ Valorant information app
 
 ![Product Screenshota](thumnail.png)
 
-This project is my exploration with Flutter to build an app that displays information about the game Valorant, including detail on Agents, Maps, Weapons, and more. The app fetches real-time data from the **[Valorant API](https://valorant-api.com/)** to provide up-to-date game information.
+This project is my exploration with Flutter to build an app that displays information about the game Valorant, including detail on Agents, Maps, Weapons, and more. The app fetches real-time data from the **[Valorant API](https://valorant-api.com/)** to provide up-to-date game information.f
 
 The first version of this app originated from my college exam, as described [Here](https://www.rizaadikurniawan.com/project/valorantlab), and I later refactored it.
 
@@ -30,6 +30,7 @@ valorantlab/
 ├── 🎯 features/            # Feature-specific packages
 │   ├── agent/              # Agent feature (list, detail, management)
 │   ├── home/               # Home screen and navigation
+│   ├── maps/               # Maps feature (list, detail, callouts)
 │   └── weapon/             # Weapon feature (list, detail, stats)
 ├── 📦 packages/            # Core infrastructure
 │   └── core/               # Shared utilities, database, networking
@@ -131,15 +132,16 @@ This project uses **Melos** for comprehensive monorepo management. Here are all 
 
 ### 🔧 Development Tools
 
-| Command                    | Description                   |
-| -------------------------- | ----------------------------- |
-| `melos run analyze`        | Run code analysis             |
-| `melos run lint`           | Run stricter linting          |
-| `melos run lint:fix`       | Auto-fix linting issues       |
-| `melos run format`         | Format all Dart files         |
-| `melos run format:fix`     | Fix formatting issues         |
-| `melos run generate`       | Run code generation           |
-| `melos run generate:watch` | Code generation in watch mode |
+| Command                     | Description                             |
+| --------------------------- | --------------------------------------- |
+| `melos run analyze`         | Run code analysis                       |
+| `melos run lint`            | Run stricter linting                    |
+| `melos run lint:fix`        | Auto-fix linting issues                 |
+| `melos run format`          | Format all Dart files                   |
+| `melos run format:fix`      | Fix formatting issues                   |
+| `melos run generate`        | Run code generation                     |
+| `melos run generate:select` | Run code generation on selected package |
+| `melos run generate:watch`  | Code generation in watch mode           |
 
 ### 🎯 Scoped Commands (Package-Specific)
 
@@ -231,6 +233,7 @@ graph TD
     valorantlab["🏠 valorantlab<br/>Main App"]
     agent["🎭 agent<br/>Agent Feature"]
     home["🏡 home<br/>Home Feature"]
+    maps["🗺️ maps<br/>Maps Feature"]
     weapon["⚔️ weapon<br/>Weapon Feature"]
     core["🛠️ core<br/>Infrastructure"]
     dependencies["📦 dependencies<br/>Shared Deps"]
@@ -239,6 +242,7 @@ graph TD
     %% Dependencies
     valorantlab --> agent
     valorantlab --> home
+    valorantlab --> maps
     valorantlab --> weapon
     valorantlab --> core
     valorantlab --> dependencies
@@ -252,6 +256,10 @@ graph TD
     home --> core
     home --> dependencies
 
+    maps --> core
+    maps --> dependencies
+    maps --> i18n
+
     weapon --> agent
     weapon --> core
     weapon --> dependencies
@@ -259,6 +267,7 @@ graph TD
 
     core --> agent
     core --> home
+    core --> maps
     core --> weapon
     core --> dependencies
     core --> i18n
@@ -270,7 +279,7 @@ graph TD
     classDef shared fill:#fff3e0,stroke:#e65100,stroke-width:2px
 
     class valorantlab mainApp
-    class agent,home,weapon feature
+    class agent,home,maps,weapon feature
     class core infrastructure
     class dependencies,i18n shared
 ```
@@ -288,6 +297,7 @@ graph TD
 - **🎯 Feature Packages**: Independent features that can be developed separately
   - `agent`: Manages agent-related functionality
   - `home`: Handles home screen and navigation
+  - `maps`: Manages map information, callouts, and tactical details
   - `weapon`: Manages weapon-related features
 - **🛠️ Core Package**: Shared infrastructure (database, networking, utilities)
 - **📦 Shared Packages**: Foundation-level packages
@@ -466,9 +476,12 @@ melos run features:test --scope=package-name
 **4. Code Generation Issues**
 
 ```bash
-# Clean and regenerate
+# Clean and regenerate all packages
 melos run build:clean
 melos run generate
+
+# Interactive package selection for generation
+melos run generate:select
 ```
 
 ### Performance Tips

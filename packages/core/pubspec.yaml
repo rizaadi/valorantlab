@@ -20,6 +20,9 @@ dependencies:
   weapon:
     path: ../../features/weapon
 
+  maps:
+    path: ../../features/maps
+
   dependencies:
     path: ../../shared/dependencies
   i18n:

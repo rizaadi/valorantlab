@@ -104,6 +104,12 @@ scripts:
     run: melos exec -c 1 --depends-on="build_runner" -- "dart run build_runner build --delete-conflicting-outputs"
     description: "Run code generation in all packages"
     
+  generate:select:
+    run: melos exec -c 1 -- "dart run build_runner build --delete-conflicting-outputs"
+    description: "Run code generation in selected package"
+    packageFilters:
+      dependsOn: "build_runner"
+    
   generate:watch:
     run: melos exec -c 1 --depends-on="build_runner" -- "dart run build_runner watch --delete-conflicting-outputs"
     description: "Run code generation in watch mode"
@@ -319,6 +325,7 @@ scripts:
         - "agent"
         - "home"
         - "weapon"
+        - "maps"
       dirExists: test
       
   features:build:
@@ -328,6 +335,7 @@ scripts:
       scope:
         - "agent"
         - "weapon"
+        - "maps"
       dependsOn: "build_runner"
       
   # Core packages only

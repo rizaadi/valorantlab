@@ -6,10 +6,11 @@ import 'package:dependencies/dependencies.dart';
 part 'agent_event.dart';
 part 'agent_state.dart';
 
+@injectable
 class AgentBloc extends Bloc<AgentEvent, AgentState> {
-  final _usecase = getIt<GetAgentsUseCase>();
+  final GetAgentsUseCase _usecase;
 
-  AgentBloc() : super(AgentState.initial()) {
+  AgentBloc(this._usecase) : super(AgentState.initial()) {
     on<GetAgents>((event, emit) async {
       emit(AgentState.loading());
       final agents = await _usecase.call(NoParams());

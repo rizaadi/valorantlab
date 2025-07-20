@@ -14,6 +14,7 @@ import 'package:agent/data/repositories/agent_repository_impl.dart' as _i5;
 import 'package:agent/domain/repositories/agent_repository.dart' as _i4;
 import 'package:agent/domain/usecases/get_agent_detail_usecase.dart' as _i9;
 import 'package:agent/domain/usecases/get_agents_usecase.dart' as _i8;
+import 'package:agent/presentation/agent/bloc/agent_bloc.dart' as _i10;
 import 'package:injectable/injectable.dart' as _i1;
 
 class AgentPackageModule extends _i1.MicroPackageModule {
@@ -29,5 +30,7 @@ class AgentPackageModule extends _i1.MicroPackageModule {
         () => _i8.GetAgentsUseCase(gh<_i4.AgentRepository>()));
     gh.lazySingleton<_i9.GetAgentDetailUseCase>(
         () => _i9.GetAgentDetailUseCase(gh<_i4.AgentRepository>()));
+    gh.factory<_i10.AgentBloc>(
+        () => _i10.AgentBloc(gh<_i8.GetAgentsUseCase>()));
   }
 }

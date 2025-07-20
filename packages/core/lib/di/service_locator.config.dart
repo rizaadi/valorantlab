@@ -9,11 +9,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:agent/agent.dart' as _i5;
-import 'package:core/di/register_module.dart' as _i7;
+import 'package:core/di/register_module.dart' as _i8;
 import 'package:core/network/connection_checker.dart' as _i4;
 import 'package:dependencies/dependencies.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
+import 'package:maps/maps.dart' as _i7;
 import 'package:weapon/weapon.dart' as _i6;
 
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -34,7 +35,8 @@ Future<_i1.GetIt> $initGetIt(
       () => _i4.ConnectionCheckerImpl(connectivity: gh<_i3.Connectivity>()));
   await _i5.AgentPackageModule().init(gh);
   await _i6.WeaponPackageModule().init(gh);
+  await _i7.MapsPackageModule().init(gh);
   return getIt;
 }
 
-class _$RegisterModule extends _i7.RegisterModule {}
+class _$RegisterModule extends _i8.RegisterModule {}
