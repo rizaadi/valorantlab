@@ -3,8 +3,6 @@ import 'package:weapon/data/models/local_weapon.dart';
 import 'package:maps/data/models/local_map.dart';
 import 'package:dependencies/dependencies.dart';
 
-// TODO: move to core package
-@lazySingleton
 class AppDatabase {
   late final Isar _isar;
   bool _isInitialized = false;

@@ -3,6 +3,7 @@ import 'package:dependencies/dependencies.dart';
 import 'package:maps/maps.dart';
 import 'package:weapon/weapon.dart';
 
+import '../database/app_database.dart';
 import 'service_locator.config.dart';
 
 final getIt = GetIt.instance;

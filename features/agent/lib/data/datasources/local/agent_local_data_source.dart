@@ -1,4 +1,3 @@
-import 'package:agent/data/datasources/database/app_database.dart';
 import 'package:agent/data/models/local_agent.dart';
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';

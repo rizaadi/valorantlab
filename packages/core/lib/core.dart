@@ -1,6 +1,7 @@
 library core;
 
 export 'constants/constants.dart';
+export 'database/database.dart';
 export 'di/service_locator.dart';
 export 'errors/errors.dart';
 export 'network/connection_checker.dart';
