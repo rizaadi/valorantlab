@@ -15,7 +15,7 @@ class _AgentScreenState extends State<AgentScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AgentBloc>(
-      create: (context) => AgentBloc()..add(const GetAgents()),
+      create: (context) => GetIt.instance<AgentBloc>()..add(const GetAgents()),
       child: const AgentView(),
     );
   }

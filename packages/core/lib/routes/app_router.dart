@@ -3,6 +3,7 @@ import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home.dart';
 import 'package:i18n/i18n.dart';
+import 'package:maps/maps.dart';
 import 'package:weapon/weapon.dart';
 
 final _rootNavigatorKey =
@@ -66,6 +67,14 @@ final routes = GoRouter(
                   },
                 )
               ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/maps',
+              builder: (context, state) => const MapsScreen(),
             ),
           ],
         ),

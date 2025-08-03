@@ -1,0 +1,14 @@
+# melos_managed_dependency_overrides: core,dependencies,home,i18n,maps,weapon
+dependency_overrides:
+  core:
+    path: ../../packages/core
+  dependencies:
+    path: ../../shared/dependencies
+  home:
+    path: ../home
+  i18n:
+    path: ../../shared/i18n
+  maps:
+    path: ../maps
+  weapon:
+    path: ../weapon

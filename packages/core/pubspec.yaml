@@ -11,14 +11,17 @@ dependencies:
   flutter:
     sdk: flutter
 
-  agent:
-    path: ../../features/agent
-    
   home:
     path: ../../features/home
 
   weapon:
     path: ../../features/weapon
+
+  maps:
+    path: ../../features/maps
+
+  agent:
+    path: ../../features/agent
 
   dependencies:
     path: ../../shared/dependencies

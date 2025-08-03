@@ -1,0 +1,36 @@
+name: maps
+description: "Maps feature package for Valorant Lab"
+version: 0.0.1
+publish_to: 'none' 
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+    
+  agent:
+    path: ../agent
+  core:
+    path: ../../packages/core
+
+  dependencies:
+    path: ../../shared/dependencies
+  i18n:
+    path: ../../shared/i18n
+
+dev_dependencies:
+  isar_generator: ^3.1.0+1
+  freezed: ^2.4.5
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.8
+  injectable_generator: ^2.3.2
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  mocktail: ^1.0.3
+
+flutter:
+  uses-material-design: true
