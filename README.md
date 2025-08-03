@@ -502,7 +502,6 @@ melos run generate:select
 - [x] Modularization with Melos
 - [x] Localization (EN & ID)
 - [x] Melos monorepo management
-- [x] CI/CD scripts and workflows
 - [x] Code quality automation
 - [x] Comprehensive testing framework
 
