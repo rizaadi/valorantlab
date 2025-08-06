@@ -3,6 +3,93 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-08-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`agent` - `v0.0.5`](#agent---v005)
+ - [`core` - `v0.0.6`](#core---v006)
+ - [`gear` - `v0.0.2`](#gear---v002)
+ - [`home` - `v0.0.5`](#home---v005)
+ - [`i18n` - `v0.0.3`](#i18n---v003)
+ - [`maps` - `v0.0.2`](#maps---v002)
+ - [`valorantlab` - `v1.4.0`](#valorantlab---v140)
+ - [`weapon` - `v0.0.3`](#weapon---v003)
+
+---
+
+#### `agent` - `v0.0.5`
+
+ - **REFACTOR**: move AppDatabase to core package.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: update readme.
+
+#### `core` - `v0.0.6`
+
+ - **REFACTOR**: move AppDatabase to core package.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: update readme.
+
+#### `gear` - `v0.0.2`
+
+ - **FEAT**(gear): add gear.
+
+#### `home` - `v0.0.5`
+
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: update readme.
+
+#### `i18n` - `v0.0.3`
+
+ - **REFACTOR**: adjust analysis option.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+
+#### `maps` - `v0.0.2`
+
+ - **REFACTOR**: move AppDatabase to core package.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+
+#### `valorantlab` - `v1.4.0`
+
+ - **REFACTOR**: adjust analysis option.
+ - **REFACTOR**: move AppDatabase to core package.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: remove CI/CD scripts and workflows from project checklist.
+ - **DOCS**: update readme.
+ - **DOCS**: update readme.
+
+#### `weapon` - `v0.0.3`
+
+ - **REFACTOR**: move AppDatabase to core package.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: update readme.
+
+## 1.4.0
+
+ - **REFACTOR**: adjust analysis option.
+ - **REFACTOR**: move AppDatabase to core package.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: remove CI/CD scripts and workflows from project checklist.
+ - **DOCS**: update readme.
+ - **DOCS**: update readme.
+
+
 ## 2025-07-17
 
 ### Changes

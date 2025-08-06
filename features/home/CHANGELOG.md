@@ -1,3 +1,9 @@
+## 0.0.5
+
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: update readme.
+
 ## 0.0.4
 
  - **FEAT**(weapon): implement weapon repository and add presentation layer.

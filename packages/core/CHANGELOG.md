@@ -1,3 +1,10 @@
+## 0.0.6
+
+ - **REFACTOR**: move AppDatabase to core package.
+ - **FEAT**(gear): add gear.
+ - **FEAT**(maps): add maps.
+ - **DOCS**: update readme.
+
 ## 0.0.5
 
  - **FEAT**(weapon): implement weapon repository and add presentation layer.
