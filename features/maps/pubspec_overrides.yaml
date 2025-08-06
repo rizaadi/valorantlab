@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: agent,core,dependencies,home,i18n,weapon
+# melos_managed_dependency_overrides: agent,core,dependencies,gear,home,i18n,weapon
 dependency_overrides:
   agent:
     path: ../agent
@@ -6,6 +6,8 @@ dependency_overrides:
     path: ../../packages/core
   dependencies:
     path: ../../shared/dependencies
+  gear:
+    path: ../gear
   home:
     path: ../home
   i18n:

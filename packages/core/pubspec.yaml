@@ -23,6 +23,9 @@ dependencies:
   agent:
     path: ../../features/agent
 
+  gear:
+    path: ../../features/gear
+
   dependencies:
     path: ../../shared/dependencies
   i18n:

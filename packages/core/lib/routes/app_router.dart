@@ -1,6 +1,7 @@
 import 'package:agent/agent.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
+import 'package:gear/gear.dart';
 import 'package:home/home.dart';
 import 'package:i18n/i18n.dart';
 import 'package:maps/maps.dart';
@@ -75,6 +76,14 @@ final routes = GoRouter(
             GoRoute(
               path: '/maps',
               builder: (context, state) => const MapsScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/gears',
+              builder: (context, state) => const GearScreen(),
             ),
           ],
         ),

@@ -1,0 +1,29 @@
+{
+  "uuid": "test-gear-uuid",
+  "displayName": "Test Gear",
+  "description": "A test gear item",
+  "descriptions": ["Test description 1", "Test description 2"],
+  "details": [
+    {
+      "name": "Test Detail",
+      "value": "Test Value"
+    }
+  ],
+  "displayIcon": "https://example.com/icon.png",
+  "assetPath": "test/path",
+  "shopData": {
+    "cost": 100,
+    "category": "Test Category",
+    "shopOrderPriority": 1,
+    "categoryText": "Test Category Text",
+    "gridPosition": {
+      "row": 1,
+      "column": 1
+    },
+    "canBeTrashed": true,
+    "image": "https://example.com/image.png",
+    "newImage": "https://example.com/new-image.png",
+    "newImage2": "https://example.com/new-image2.png",
+    "assetPath": "test/shop/path"
+  }
+}

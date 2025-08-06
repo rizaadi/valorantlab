@@ -19,6 +19,9 @@ dependencies:
 
   weapon:
     path: features/weapon
+
+  gear:
+    path: features/gear
     
   # Shared
   dependencies:

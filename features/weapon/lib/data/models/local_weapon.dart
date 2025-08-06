@@ -14,7 +14,7 @@ class LocalWeapon {
   String? killStreamIcon;
   String? assetPath;
   LocalWeaponStats? weaponStats;
-  LocalShopData? shopData;
+  LocalWeaponShopData? shopData;
   List<LocalSkin>? skins;
 
   LocalWeapon({
@@ -32,17 +32,17 @@ class LocalWeapon {
 }
 
 @embedded
-class LocalShopData {
+class LocalWeaponShopData {
   int? cost;
   String? category;
   int? shopOrderPriority;
   String? categoryText;
-  LocalGridPosition? gridPosition;
+  LocalWeaponGridPosition? gridPosition;
   bool? canBeTrashed;
   String? newImage;
   String? assetPath;
 
-  LocalShopData({
+  LocalWeaponShopData({
     this.cost,
     this.category,
     this.shopOrderPriority,
@@ -55,11 +55,11 @@ class LocalShopData {
 }
 
 @embedded
-class LocalGridPosition {
+class LocalWeaponGridPosition {
   int? row;
   int? column;
 
-  LocalGridPosition({
+  LocalWeaponGridPosition({
     this.row,
     this.column,
   });

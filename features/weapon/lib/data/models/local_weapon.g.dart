@@ -51,7 +51,7 @@ const LocalWeaponSchema = CollectionSchema(
       id: 6,
       name: r'shopData',
       type: IsarType.object,
-      target: r'LocalShopData',
+      target: r'LocalWeaponShopData',
     ),
     r'skins': PropertySchema(
       id: 7,
@@ -84,8 +84,8 @@ const LocalWeaponSchema = CollectionSchema(
     r'LocalAltShotgunStats': LocalAltShotgunStatsSchema,
     r'LocalAirBurstStats': LocalAirBurstStatsSchema,
     r'LocalDamageRange': LocalDamageRangeSchema,
-    r'LocalShopData': LocalShopDataSchema,
-    r'LocalGridPosition': LocalGridPositionSchema,
+    r'LocalWeaponShopData': LocalWeaponShopDataSchema,
+    r'LocalWeaponGridPosition': LocalWeaponGridPositionSchema,
     r'LocalSkin': LocalSkinSchema,
     r'LocalChroma': LocalChromaSchema,
     r'LocalLevel': LocalLevelSchema
@@ -142,8 +142,8 @@ int _localWeaponEstimateSize(
     final value = object.shopData;
     if (value != null) {
       bytesCount += 3 +
-          LocalShopDataSchema.estimateSize(
-              value, allOffsets[LocalShopData]!, allOffsets);
+          LocalWeaponShopDataSchema.estimateSize(
+              value, allOffsets[LocalWeaponShopData]!, allOffsets);
     }
   }
   {
@@ -184,10 +184,10 @@ void _localWeaponSerialize(
   writer.writeString(offsets[3], object.displayIcon);
   writer.writeString(offsets[4], object.displayName);
   writer.writeString(offsets[5], object.killStreamIcon);
-  writer.writeObject<LocalShopData>(
+  writer.writeObject<LocalWeaponShopData>(
     offsets[6],
     allOffsets,
-    LocalShopDataSchema.serialize,
+    LocalWeaponShopDataSchema.serialize,
     object.shopData,
   );
   writer.writeObjectList<LocalSkin>(
@@ -218,9 +218,9 @@ LocalWeapon _localWeaponDeserialize(
     displayIcon: reader.readStringOrNull(offsets[3]),
     displayName: reader.readStringOrNull(offsets[4]),
     killStreamIcon: reader.readStringOrNull(offsets[5]),
-    shopData: reader.readObjectOrNull<LocalShopData>(
+    shopData: reader.readObjectOrNull<LocalWeaponShopData>(
       offsets[6],
-      LocalShopDataSchema.deserialize,
+      LocalWeaponShopDataSchema.deserialize,
       allOffsets,
     ),
     skins: reader.readObjectList<LocalSkin>(
@@ -259,9 +259,9 @@ P _localWeaponDeserializeProp<P>(
     case 5:
       return (reader.readStringOrNull(offset)) as P;
     case 6:
-      return (reader.readObjectOrNull<LocalShopData>(
+      return (reader.readObjectOrNull<LocalWeaponShopData>(
         offset,
-        LocalShopDataSchema.deserialize,
+        LocalWeaponShopDataSchema.deserialize,
         allOffsets,
       )) as P;
     case 7:
@@ -1631,7 +1631,7 @@ extension LocalWeaponQueryFilter
 extension LocalWeaponQueryObject
     on QueryBuilder<LocalWeapon, LocalWeapon, QFilterCondition> {
   QueryBuilder<LocalWeapon, LocalWeapon, QAfterFilterCondition> shopData(
-      FilterQuery<LocalShopData> q) {
+      FilterQuery<LocalWeaponShopData> q) {
     return QueryBuilder.apply(this, (query) {
       return query.object(q, r'shopData');
     });
@@ -1945,7 +1945,7 @@ extension LocalWeaponQueryProperty
     });
   }
 
-  QueryBuilder<LocalWeapon, LocalShopData?, QQueryOperations>
+  QueryBuilder<LocalWeapon, LocalWeaponShopData?, QQueryOperations>
       shopDataProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'shopData');
@@ -1980,9 +1980,9 @@ extension LocalWeaponQueryProperty
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-const LocalShopDataSchema = Schema(
-  name: r'LocalShopData',
-  id: -3711843544820465195,
+const LocalWeaponShopDataSchema = Schema(
+  name: r'LocalWeaponShopData',
+  id: -3173246629448989760,
   properties: {
     r'assetPath': PropertySchema(
       id: 0,
@@ -2013,7 +2013,7 @@ const LocalShopDataSchema = Schema(
       id: 5,
       name: r'gridPosition',
       type: IsarType.object,
-      target: r'LocalGridPosition',
+      target: r'LocalWeaponGridPosition',
     ),
     r'newImage': PropertySchema(
       id: 6,
@@ -2026,14 +2026,14 @@ const LocalShopDataSchema = Schema(
       type: IsarType.long,
     )
   },
-  estimateSize: _localShopDataEstimateSize,
-  serialize: _localShopDataSerialize,
-  deserialize: _localShopDataDeserialize,
-  deserializeProp: _localShopDataDeserializeProp,
+  estimateSize: _localWeaponShopDataEstimateSize,
+  serialize: _localWeaponShopDataSerialize,
+  deserialize: _localWeaponShopDataDeserialize,
+  deserializeProp: _localWeaponShopDataDeserializeProp,
 );
 
-int _localShopDataEstimateSize(
-  LocalShopData object,
+int _localWeaponShopDataEstimateSize(
+  LocalWeaponShopData object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -2060,8 +2060,8 @@ int _localShopDataEstimateSize(
     final value = object.gridPosition;
     if (value != null) {
       bytesCount += 3 +
-          LocalGridPositionSchema.estimateSize(
-              value, allOffsets[LocalGridPosition]!, allOffsets);
+          LocalWeaponGridPositionSchema.estimateSize(
+              value, allOffsets[LocalWeaponGridPosition]!, allOffsets);
     }
   }
   {
@@ -2073,8 +2073,8 @@ int _localShopDataEstimateSize(
   return bytesCount;
 }
 
-void _localShopDataSerialize(
-  LocalShopData object,
+void _localWeaponShopDataSerialize(
+  LocalWeaponShopData object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -2084,31 +2084,31 @@ void _localShopDataSerialize(
   writer.writeString(offsets[2], object.category);
   writer.writeString(offsets[3], object.categoryText);
   writer.writeLong(offsets[4], object.cost);
-  writer.writeObject<LocalGridPosition>(
+  writer.writeObject<LocalWeaponGridPosition>(
     offsets[5],
     allOffsets,
-    LocalGridPositionSchema.serialize,
+    LocalWeaponGridPositionSchema.serialize,
     object.gridPosition,
   );
   writer.writeString(offsets[6], object.newImage);
   writer.writeLong(offsets[7], object.shopOrderPriority);
 }
 
-LocalShopData _localShopDataDeserialize(
+LocalWeaponShopData _localWeaponShopDataDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = LocalShopData(
+  final object = LocalWeaponShopData(
     assetPath: reader.readStringOrNull(offsets[0]),
     canBeTrashed: reader.readBoolOrNull(offsets[1]),
     category: reader.readStringOrNull(offsets[2]),
     categoryText: reader.readStringOrNull(offsets[3]),
     cost: reader.readLongOrNull(offsets[4]),
-    gridPosition: reader.readObjectOrNull<LocalGridPosition>(
+    gridPosition: reader.readObjectOrNull<LocalWeaponGridPosition>(
       offsets[5],
-      LocalGridPositionSchema.deserialize,
+      LocalWeaponGridPositionSchema.deserialize,
       allOffsets,
     ),
     newImage: reader.readStringOrNull(offsets[6]),
@@ -2117,7 +2117,7 @@ LocalShopData _localShopDataDeserialize(
   return object;
 }
 
-P _localShopDataDeserializeProp<P>(
+P _localWeaponShopDataDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -2135,9 +2135,9 @@ P _localShopDataDeserializeProp<P>(
     case 4:
       return (reader.readLongOrNull(offset)) as P;
     case 5:
-      return (reader.readObjectOrNull<LocalGridPosition>(
+      return (reader.readObjectOrNull<LocalWeaponGridPosition>(
         offset,
-        LocalGridPositionSchema.deserialize,
+        LocalWeaponGridPositionSchema.deserialize,
         allOffsets,
       )) as P;
     case 6:
@@ -2149,9 +2149,9 @@ P _localShopDataDeserializeProp<P>(
   }
 }
 
-extension LocalShopDataQueryFilter
-    on QueryBuilder<LocalShopData, LocalShopData, QFilterCondition> {
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+extension LocalWeaponShopDataQueryFilter on QueryBuilder<LocalWeaponShopData,
+    LocalWeaponShopData, QFilterCondition> {
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2160,7 +2160,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2169,7 +2169,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathEqualTo(
     String? value, {
     bool caseSensitive = true,
@@ -2183,7 +2183,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathGreaterThan(
     String? value, {
     bool include = false,
@@ -2199,7 +2199,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathLessThan(
     String? value, {
     bool include = false,
@@ -2215,7 +2215,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathBetween(
     String? lower,
     String? upper, {
@@ -2235,7 +2235,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -2249,7 +2249,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -2263,7 +2263,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -2274,7 +2274,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
@@ -2285,7 +2285,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2295,7 +2295,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       assetPathIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2305,7 +2305,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       canBeTrashedIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2314,7 +2314,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       canBeTrashedIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2323,7 +2323,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       canBeTrashedEqualTo(bool? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2333,7 +2333,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2342,7 +2342,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2351,7 +2351,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryEqualTo(
     String? value, {
     bool caseSensitive = true,
@@ -2365,7 +2365,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryGreaterThan(
     String? value, {
     bool include = false,
@@ -2381,7 +2381,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryLessThan(
     String? value, {
     bool include = false,
@@ -2397,7 +2397,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryBetween(
     String? lower,
     String? upper, {
@@ -2417,7 +2417,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -2431,7 +2431,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -2445,7 +2445,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -2456,7 +2456,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
@@ -2467,7 +2467,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2477,7 +2477,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2487,7 +2487,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2496,7 +2496,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2505,7 +2505,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextEqualTo(
     String? value, {
     bool caseSensitive = true,
@@ -2519,7 +2519,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextGreaterThan(
     String? value, {
     bool include = false,
@@ -2535,7 +2535,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextLessThan(
     String? value, {
     bool include = false,
@@ -2551,7 +2551,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextBetween(
     String? lower,
     String? upper, {
@@ -2571,7 +2571,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -2585,7 +2585,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -2599,7 +2599,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -2610,7 +2610,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
@@ -2621,7 +2621,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2631,7 +2631,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       categoryTextIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2641,7 +2641,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       costIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2650,7 +2650,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       costIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2659,8 +2659,8 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition> costEqualTo(
-      int? value) {
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
+      costEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'cost',
@@ -2669,7 +2669,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       costGreaterThan(
     int? value, {
     bool include = false,
@@ -2683,7 +2683,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       costLessThan(
     int? value, {
     bool include = false,
@@ -2697,7 +2697,8 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition> costBetween(
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
+      costBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -2714,7 +2715,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       gridPositionIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2723,7 +2724,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       gridPositionIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2732,7 +2733,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2741,7 +2742,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2750,7 +2751,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageEqualTo(
     String? value, {
     bool caseSensitive = true,
@@ -2764,7 +2765,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageGreaterThan(
     String? value, {
     bool include = false,
@@ -2780,7 +2781,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageLessThan(
     String? value, {
     bool include = false,
@@ -2796,7 +2797,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageBetween(
     String? lower,
     String? upper, {
@@ -2816,7 +2817,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageStartsWith(
     String value, {
     bool caseSensitive = true,
@@ -2830,7 +2831,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageEndsWith(
     String value, {
     bool caseSensitive = true,
@@ -2844,7 +2845,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageContains(String value, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
@@ -2855,7 +2856,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageMatches(String pattern, {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
@@ -2866,7 +2867,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2876,7 +2877,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       newImageIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
@@ -2886,7 +2887,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       shopOrderPriorityIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -2895,7 +2896,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       shopOrderPriorityIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -2904,7 +2905,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       shopOrderPriorityEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -2914,7 +2915,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       shopOrderPriorityGreaterThan(
     int? value, {
     bool include = false,
@@ -2928,7 +2929,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       shopOrderPriorityLessThan(
     int? value, {
     bool include = false,
@@ -2942,7 +2943,7 @@ extension LocalShopDataQueryFilter
     });
   }
 
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
       shopOrderPriorityBetween(
     int? lower,
     int? upper, {
@@ -2961,10 +2962,10 @@ extension LocalShopDataQueryFilter
   }
 }
 
-extension LocalShopDataQueryObject
-    on QueryBuilder<LocalShopData, LocalShopData, QFilterCondition> {
-  QueryBuilder<LocalShopData, LocalShopData, QAfterFilterCondition>
-      gridPosition(FilterQuery<LocalGridPosition> q) {
+extension LocalWeaponShopDataQueryObject on QueryBuilder<LocalWeaponShopData,
+    LocalWeaponShopData, QFilterCondition> {
+  QueryBuilder<LocalWeaponShopData, LocalWeaponShopData, QAfterFilterCondition>
+      gridPosition(FilterQuery<LocalWeaponGridPosition> q) {
     return QueryBuilder.apply(this, (query) {
       return query.object(q, r'gridPosition');
     });
@@ -2974,9 +2975,9 @@ extension LocalShopDataQueryObject
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-const LocalGridPositionSchema = Schema(
-  name: r'LocalGridPosition',
-  id: 5458717907541060252,
+const LocalWeaponGridPositionSchema = Schema(
+  name: r'LocalWeaponGridPosition',
+  id: -6831030975131944281,
   properties: {
     r'column': PropertySchema(
       id: 0,
@@ -2989,14 +2990,14 @@ const LocalGridPositionSchema = Schema(
       type: IsarType.long,
     )
   },
-  estimateSize: _localGridPositionEstimateSize,
-  serialize: _localGridPositionSerialize,
-  deserialize: _localGridPositionDeserialize,
-  deserializeProp: _localGridPositionDeserializeProp,
+  estimateSize: _localWeaponGridPositionEstimateSize,
+  serialize: _localWeaponGridPositionSerialize,
+  deserialize: _localWeaponGridPositionDeserialize,
+  deserializeProp: _localWeaponGridPositionDeserializeProp,
 );
 
-int _localGridPositionEstimateSize(
-  LocalGridPosition object,
+int _localWeaponGridPositionEstimateSize(
+  LocalWeaponGridPosition object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -3004,8 +3005,8 @@ int _localGridPositionEstimateSize(
   return bytesCount;
 }
 
-void _localGridPositionSerialize(
-  LocalGridPosition object,
+void _localWeaponGridPositionSerialize(
+  LocalWeaponGridPosition object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -3014,20 +3015,20 @@ void _localGridPositionSerialize(
   writer.writeLong(offsets[1], object.row);
 }
 
-LocalGridPosition _localGridPositionDeserialize(
+LocalWeaponGridPosition _localWeaponGridPositionDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = LocalGridPosition(
+  final object = LocalWeaponGridPosition(
     column: reader.readLongOrNull(offsets[0]),
     row: reader.readLongOrNull(offsets[1]),
   );
   return object;
 }
 
-P _localGridPositionDeserializeProp<P>(
+P _localWeaponGridPositionDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -3043,10 +3044,10 @@ P _localGridPositionDeserializeProp<P>(
   }
 }
 
-extension LocalGridPositionQueryFilter
-    on QueryBuilder<LocalGridPosition, LocalGridPosition, QFilterCondition> {
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      columnIsNull() {
+extension LocalWeaponGridPositionQueryFilter on QueryBuilder<
+    LocalWeaponGridPosition, LocalWeaponGridPosition, QFilterCondition> {
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> columnIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'column',
@@ -3054,8 +3055,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      columnIsNotNull() {
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> columnIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'column',
@@ -3063,8 +3064,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      columnEqualTo(int? value) {
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> columnEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'column',
@@ -3073,8 +3074,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      columnGreaterThan(
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> columnGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -3087,8 +3088,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      columnLessThan(
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> columnLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -3101,8 +3102,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      columnBetween(
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> columnBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -3119,8 +3120,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      rowIsNull() {
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> rowIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'row',
@@ -3128,8 +3129,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      rowIsNotNull() {
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> rowIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'row',
@@ -3137,8 +3138,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      rowEqualTo(int? value) {
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> rowEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'row',
@@ -3147,8 +3148,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      rowGreaterThan(
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> rowGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -3161,8 +3162,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      rowLessThan(
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> rowLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -3175,8 +3176,8 @@ extension LocalGridPositionQueryFilter
     });
   }
 
-  QueryBuilder<LocalGridPosition, LocalGridPosition, QAfterFilterCondition>
-      rowBetween(
+  QueryBuilder<LocalWeaponGridPosition, LocalWeaponGridPosition,
+      QAfterFilterCondition> rowBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -3194,8 +3195,8 @@ extension LocalGridPositionQueryFilter
   }
 }
 
-extension LocalGridPositionQueryObject
-    on QueryBuilder<LocalGridPosition, LocalGridPosition, QFilterCondition> {}
+extension LocalWeaponGridPositionQueryObject on QueryBuilder<
+    LocalWeaponGridPosition, LocalWeaponGridPosition, QFilterCondition> {}
 
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types

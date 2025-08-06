@@ -10,9 +10,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:agent/agent.dart' as _i6;
 import 'package:core/database/app_database.dart' as _i4;
-import 'package:core/di/register_module.dart' as _i9;
+import 'package:core/di/register_module.dart' as _i10;
 import 'package:core/network/connection_checker.dart' as _i5;
 import 'package:dependencies/dependencies.dart' as _i3;
+import 'package:gear/gear.dart' as _i9;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:maps/maps.dart' as _i8;
@@ -38,7 +39,8 @@ Future<_i1.GetIt> $initGetIt(
   await _i6.AgentPackageModule().init(gh);
   await _i7.WeaponPackageModule().init(gh);
   await _i8.MapsPackageModule().init(gh);
+  await _i9.GearPackageModule().init(gh);
   return getIt;
 }
 
-class _$RegisterModule extends _i9.RegisterModule {}
+class _$RegisterModule extends _i10.RegisterModule {}
