@@ -2,6 +2,7 @@ import 'package:agent/agent.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:maps/maps.dart';
 import 'package:weapon/weapon.dart';
+import 'package:gear/gear.dart';
 
 import '../database/app_database.dart';
 import 'service_locator.config.dart';
@@ -14,7 +15,8 @@ final getIt = GetIt.instance;
   externalPackageModulesAfter: [
     ExternalModule(AgentPackageModule),
     ExternalModule(WeaponPackageModule),
-    ExternalModule(MapsPackageModule)
+    ExternalModule(MapsPackageModule),
+    ExternalModule(GearPackageModule)
   ],
 )
 Future<void> configureDependencies({required bool isProd}) async {

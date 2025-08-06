@@ -16,7 +16,7 @@ extension LocalWeaponExtension on LocalWeapon {
       );
 }
 
-extension LocalShopDataExtension on LocalShopData {
+extension LocalWeaponShopDataExtension on LocalWeaponShopData {
   ShopData toEntity() => ShopData(
         cost: cost ?? 0,
         category: category ?? '',
@@ -31,7 +31,7 @@ extension LocalShopDataExtension on LocalShopData {
       );
 }
 
-extension LocalGridPositionExtension on LocalGridPosition {
+extension LocalWeaponGridPositionExtension on LocalWeaponGridPosition {
   GridPosition toEntity() => GridPosition(
         row: row ?? 0,
         column: column ?? 0,

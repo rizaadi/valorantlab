@@ -44,7 +44,7 @@ extension ApiShopDataExtension on ApiShopData {
         assetPath: assetPath,
       );
 
-  LocalShopData toLocal() => LocalShopData(
+  LocalWeaponShopData toLocal() => LocalWeaponShopData(
         cost: cost,
         category: category,
         shopOrderPriority: shopOrderPriority,
@@ -62,7 +62,7 @@ extension ApiGridPositionExtension on ApiGridPosition {
         column: column,
       );
 
-  LocalGridPosition toLocal() => LocalGridPosition(
+  LocalWeaponGridPosition toLocal() => LocalWeaponGridPosition(
         row: row,
         column: column,
       );
